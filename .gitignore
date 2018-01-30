@@ -1,0 +1,9 @@
+*.log
+.idea
+node_modules
+dist
+es
+coverage
+*compiles.js
+*.js.map
+__snapshots__
