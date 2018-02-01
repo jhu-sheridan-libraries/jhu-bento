@@ -6,6 +6,9 @@
   "repository": "https://github.com/jiaola/lBento",
   "author": "Dazhi Jiao",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -21,12 +24,10 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "history": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-flexbox-grid": "^2.0.0",
     "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",

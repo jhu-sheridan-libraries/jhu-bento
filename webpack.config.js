@@ -15,13 +15,13 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ]
+            loader: 'style-loader!css-loader?modules',
+            include: /flexboxgrid/
         }
     ]
   },
   devServer: {
-      contentBase: path.resolve(__dirname, "dist"),
-      historyApiFallback: true // To enable direct access to route
+      contentBase: path.resolve(__dirname, "dist")      
   },
   devtool: 'source-map',
 };
