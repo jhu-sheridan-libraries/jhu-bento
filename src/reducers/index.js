@@ -1,5 +1,5 @@
 import catalyst from './catalyst'
 const reducers = {
-  catalyst
+  catalyst 
 }
 export default reducers

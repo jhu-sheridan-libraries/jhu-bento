@@ -9,8 +9,16 @@ class CatalystRecord extends Component {
   }
 
   render() {
+    let { record, index } = this.props
     return (
-      <span>title: { this.props.record.title }</span>
+      <div>
+        <h4>
+          <span>{ index + 1 }.</span>&nbsp;&nbsp;
+          <a href={`https://catalyst.library.jhu.edu/catalog/${ record.id }`}>{ record.title_display }</a>&nbsp;&nbsp;
+          <span className='types'>{ record.format.join(', ') }</span>
+        </h4>
+        <span>{ record.pub_date }</span>
+      </div>
     )    
   }
 }

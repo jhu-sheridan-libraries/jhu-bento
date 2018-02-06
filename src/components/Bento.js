@@ -10,7 +10,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: () => {
       console.log('click')
-      dispatch(searchCatalystBegin('test'))
+      dispatch(searchCatalystBegin({ 
+        query: 'test',
+        solrSearchUrl: 'http://localhost:18983/solr/catalyst/select' }))
     }
   }
 }
@@ -23,19 +25,15 @@ class Bento extends Component {
     return (
       <Grid fluid>
         <Row top="xs">
-          <Col xs={6} md={4} lg={2}>
+          <Col xs={12} md={12} lg={12}>
             <button className="btn btn-primary" onClick={ this.sendClick }>Fetch</button>
-          </Col>
-          <Col xs={6} md={8} lg={10}>
-            Hello, Universe!
-            <p>this is a paragraph</p>
           </Col>
         </Row>
         <Row>
-          <Col xs={6} md={4} lg={2}>
+          <Col xs={12} md={6} lg={6}>
             <Catalyst />
           </Col>
-          <Col xs={6} md={8} lg={10}>
+          <Col xs={12} md={6} lg={6}>
             Hello, Universe!
             <p>this is a paragraph</p>
           </Col>
