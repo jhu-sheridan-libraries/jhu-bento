@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { searchCatalystBegin } from '../actions/catalyst';
+import { bentoSearchBegin } from '../actions';
 import Catalyst from '../components/Catalyst'
+import LaraResources from './LaraResources'
 
 const mapStateToProps = (state) => ({})
 
@@ -10,9 +11,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: () => {
       console.log('click')
-      dispatch(searchCatalystBegin({ 
-        query: 'test',
-        solrSearchUrl: 'http://localhost:18983/solr/catalyst/select' }))
+      dispatch(bentoSearchBegin({ 
+        query: 'test'
+      }))
     }
   }
 }
@@ -34,8 +35,7 @@ class Bento extends Component {
             <Catalyst />
           </Col>
           <Col xs={12} md={6} lg={6}>
-            Hello, Universe!
-            <p>this is a paragraph</p>
+            <LaraResources />
           </Col>
         </Row>
       </Grid>

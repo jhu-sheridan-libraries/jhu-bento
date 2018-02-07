@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import reducers from './reducers'
 import { combineReducers, applyMiddleware, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import sagas from './sagas/catalyst'
+import sagas from './sagas'
 import Bento from './components/Bento'
 
 const sagaMiddleware = createSagaMiddleware()

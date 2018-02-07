@@ -39,7 +39,8 @@ const doSearch = (searchParams) => {
       const reqBody = JSON.stringify(solrParams);
   
       // do the search. 'post' is required with a fetch() body. Solr doesn't mind
-      fetch(searchParams.solrSearchUrl, {
+      let solrSearchUrl = 'http://localhost:18983/solr/catalyst/select' 
+      fetch(solrSearchUrl, {
         method: 'post',
         body: reqBody,
         headers: new Headers({
@@ -66,8 +67,8 @@ const doSearch = (searchParams) => {
   })  
 }
 
-function* saga() {
-  yield takeLatest('SEARCH_CATALYST_BEGIN', searchSolr)
-}
+// function* saga() {
+//   yield takeEvery('BENTO_SEARCH_BEGIN', searchSolr)
+// }
 
-export default saga
+export default searchSolr
