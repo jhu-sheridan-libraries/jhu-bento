@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { bentoSearchBegin } from '../actions';
-import Catalyst from '../components/Catalyst'
 import LaraResources from './LaraResources'
+import SolrWidget from '../widgets/SolrWidget'
 
 const mapStateToProps = (state) => ({})
 
@@ -32,11 +32,11 @@ class Bento extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6} lg={6}>
-            <Catalyst />
+            <SolrWidget />
           </Col>
           <Col xs={12} md={6} lg={6}>
             <LaraResources />
-          </Col>
+          </Col>          
         </Row>
       </Grid>
     )
