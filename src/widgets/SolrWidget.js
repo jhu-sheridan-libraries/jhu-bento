@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import Immutable from 'seamless-immutable'
 import { createActions, handleActions } from 'redux-actions'
 import 'regenerator-runtime/runtime'
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import { connect } from 'react-redux'
 
 // actions
-const { solr } = createActions({
+const actions = createActions({
   SOLR: {
     SEARCH_SUCCESS: data => data, // searchSuccess
-    SEARCH_FAILURE: data => data  // searchFailure
+    SEARCH_FAILURE: error => error  // searchFailure
   }
 })
 
@@ -20,10 +20,10 @@ const initialState = Immutable({
 })
 
 const solrWidgetReducers = handleActions({
-  [solr.searchSuccess](state, { payload }) { 
+  [actions.solr.searchSuccess](state, { payload }) { 
     return {...state, data: payload, isLoading: false} 
   },
-  [solr.searchFailure](state, { payload }) {
+  [actions.solr.searchFailure](state, { payload }) {
     return { ...state, error: payload, isLoading: false}
   }
 }, initialState)
@@ -33,9 +33,9 @@ function* searchSolr({ payload: value }) {
   try {
     const response = yield call(doSearch, value)
     console.log(response)
-    yield put(solr.searchSuccess(response))
+    yield put(actions.solr.searchSuccess(response))
   } catch (e) {
-    yield put(solr.searchFailure(value))
+    yield put(actions.solr.searchFailure(value))
   }
 }
 
@@ -90,6 +90,7 @@ class SolrWidget extends Component {
   }
 
   render() {
+    console.log('response')
     if ('response' in this.props.data) {
       let { docs, numFound, start } = this.props.data.response
       let Presenter = this.props.data.presenter || 'SolrItemPresenter'
@@ -98,6 +99,8 @@ class SolrWidget extends Component {
       )
       return (
         <div id={ this.props.id }>
+          <h2>Catalyst</h2>
+          <span>Total found: { numFound }</span>
           { items }
         </div>
       )

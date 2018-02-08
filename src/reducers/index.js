@@ -1,7 +1,7 @@
-import laraResources from './laraResources'
+import { laraWidgetReducers } from '../widgets/LaraResourcesWidget'
 import { solrWidgetReducers } from '../widgets/SolrWidget'
 const reducers = {
-  laraResources,
+  laraWidgetReducers,
   solrWidgetReducers
 }
 export default reducers
