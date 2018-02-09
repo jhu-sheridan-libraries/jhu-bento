@@ -72,7 +72,6 @@ const doSearch = (searchParams) => {
         }
       })
       .then((response) => {
-        console.log('response:', response)
         return resolve(response)
       })
       .catch((error) => {

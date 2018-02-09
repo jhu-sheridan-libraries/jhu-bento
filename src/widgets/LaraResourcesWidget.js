@@ -43,7 +43,7 @@ function* searchLara({ payload: value }) {
 const doLaraSearch = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
-      return fetch('http://localhost:3000/resources?contains=' + searchParams.query, {})
+      return fetch('http://localhost:3000/resources?per_page=10&contains=' + searchParams.query, {})
       .then(response => response.json())
       .then(json => resolve(json))
       .catch(error => reject(error))
@@ -67,7 +67,7 @@ class LaraWidget extends Component {
       )
       return (
         <div id='catalyst-result'>
-          <h2>Lara Resources</h2>
+          <h2>Databases</h2>
           <span>Total found: </span>
           { items }
         </div>

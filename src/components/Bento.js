@@ -4,7 +4,8 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { bentoSearchBegin } from '../actions';
 import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import SolrWidget from '../widgets/SolrWidget'
-
+import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
+import EdsWidget from '../widgets/EdsWidget'
 const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => {
@@ -36,6 +37,14 @@ class Bento extends Component {
           </Col>
           <Col xs={12} md={6} lg={6}>
             <LaraResourcesWidget />
+          </Col>          
+        </Row>
+        <Row>
+          <Col xs={12} md={6} lg={6}>
+            <ArchivesSpaceWidget />
+          </Col>
+          <Col xs={12} md={6} lg={6}>
+            <EdsWidget />
           </Col>          
         </Row>
       </Grid>
