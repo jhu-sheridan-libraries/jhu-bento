@@ -32,7 +32,6 @@ const archivesSpaceWidgetReducers = handleActions({
 function* searchArchivesSpace({ payload: value }) {
   try {
     const response = yield call(doSearch, value)
-    console.log(response)
     yield put(actions.archivesSpace.searchSuccess(response))
   } catch (e) {
     yield put(actions.archivesSpace.searchFailure(value))

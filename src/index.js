@@ -10,6 +10,7 @@ import Bento from './components/Bento'
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [ sagaMiddleware ]
 const store = applyMiddleware(...middleware)(createStore)(combineReducers(reducers))
+
 sagaMiddleware.run(sagas)
 const app = document.getElementById('app')
 render(

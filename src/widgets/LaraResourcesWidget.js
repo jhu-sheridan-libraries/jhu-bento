@@ -1,44 +1,7 @@
 import React, { Component } from 'react'
-import Immutable from 'seamless-immutable'
-import { createActions, handleActions } from 'redux-actions'
-import 'regenerator-runtime/runtime'
-import { call, put } from 'redux-saga/effects'
 import { connect } from 'react-redux'
-
-// actions
-// Note: for namesapces to work, here don't use { lara },
-// use the top level name - actions
-const actions = createActions({
-  LARA: {
-    SEARCH_SUCCESS: data => data,
-    SEARCH_FAILURE: error => error
-  }
-})
-
-// reducers
-const initialState = Immutable({
-  data: {},
-  isLoading: false
-})
-
-const laraWidgetReducers = handleActions({
-  [actions.lara.searchSuccess](state, { payload }) { 
-    return {...state, data: payload, isLoading: false} 
-  },
-  [actions.lara.searchFailure](state, { payload }) {
-    return { ...state, error: payload, isLoading: false}
-  }
-}, initialState)
-
-// sagas
-function* searchLara({ payload: value }) {
-  try {
-    const response = yield call(doLaraSearch, value)
-    yield put(actions.lara.searchSuccess(response))
-  } catch (e) {
-    yield put(actions.lara.searchFailure(value))
-  }
-}
+import reducers from '../reducers/search'
+import * as actions from '../actions'
 
 const doLaraSearch = (searchParams) => {
   return new Promise((resolve, reject) => {
@@ -89,9 +52,9 @@ const LaraItem = ({ record, index }) => (
 )    
 
 const mapStateToProps = (state) => {
-  const { data } = state.laraWidgetReducers
+  const { data } = state
   return { data }
 }
 
 export default connect(mapStateToProps)(LaraWidget)
-export { laraWidgetReducers, searchLara }
+export { doLaraSearch }

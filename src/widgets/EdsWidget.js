@@ -32,7 +32,6 @@ const edsWidgetReducers = handleActions({
 function* searchEds({ payload: value }) {
   try {
     const response = yield call(doSearch, value)
-    console.log(response)
     yield put(actions.eds.searchSuccess(response))
   } catch (e) {
     yield put(actions.eds.searchFailure(value))

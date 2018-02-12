@@ -32,7 +32,6 @@ const solrWidgetReducers = handleActions({
 function* searchSolr({ payload: value }) {
   try {
     const response = yield call(doSearch, value)
-    console.log(response)
     yield put(actions.solr.searchSuccess(response))
   } catch (e) {
     yield put(actions.solr.searchFailure(value))
@@ -89,7 +88,6 @@ class SolrWidget extends Component {
   }
 
   render() {
-    console.log('response')
     if ('response' in this.props.data) {
       let { docs, numFound, start } = this.props.data.response
       let Presenter = this.props.data.presenter || 'SolrItemPresenter'

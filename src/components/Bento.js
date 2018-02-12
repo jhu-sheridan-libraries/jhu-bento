@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
+import { subspaced } from 'react-redux-subspace'
 import { bentoSearchBegin } from '../actions';
 import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import SolrWidget from '../widgets/SolrWidget'
@@ -11,13 +12,14 @@ const mapStateToProps = (state) => ({})
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: () => {
-      console.log('click')
       dispatch(bentoSearchBegin({ 
         query: 'test'
       }))
     }
   }
 }
+
+const LaraContainer = subspaced((state) => state.lara, 'lara')(LaraResourcesWidget)
 
 class Bento extends Component {
   sendClick = () => {
@@ -36,7 +38,7 @@ class Bento extends Component {
             <SolrWidget />
           </Col>
           <Col xs={12} md={6} lg={6}>
-            <LaraResourcesWidget />
+            <LaraContainer />
           </Col>          
         </Row>
         <Row>
