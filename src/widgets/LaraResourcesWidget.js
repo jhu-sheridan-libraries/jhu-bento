@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import reducers from '../reducers/search'
-import * as actions from '../actions'
 
-const doLaraSearch = (searchParams) => {
+const searchLara = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
       return fetch('http://localhost:3000/resources?per_page=10&contains=' + searchParams.query, {})
@@ -51,10 +49,7 @@ const LaraItem = ({ record, index }) => (
   </div>
 )    
 
-const mapStateToProps = (state) => {
-  const { data } = state
-  return { data }
-}
+const mapStateToProps = ({ data }) => ({ data })
 
 export default connect(mapStateToProps)(LaraWidget)
-export { doLaraSearch }
+export { searchLara }

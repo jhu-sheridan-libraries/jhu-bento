@@ -3,7 +3,6 @@ import Immutable from 'seamless-immutable'
 import * as actions from '../actions'
 import { combineReducers } from 'redux'
 
-// reducers
 const initialState = Immutable({
   data: {}, 
   isLoading: false

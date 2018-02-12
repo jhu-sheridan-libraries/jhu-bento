@@ -1,44 +1,7 @@
 import React, { Component } from 'react'
-import Immutable from 'seamless-immutable'
-import { createActions, handleActions } from 'redux-actions'
-import 'regenerator-runtime/runtime'
-import { call, put } from 'redux-saga/effects'
 import { connect } from 'react-redux'
 
-// actions
-const actions = createActions({
-  ARCHIVES_SPACE: {
-    SEARCH_SUCCESS: data => data, // searchSuccess
-    SEARCH_FAILURE: error => error  // searchFailure
-  }
-})
-
-// reducers
-const initialState = Immutable({
-  data: {}, 
-  isLoading: false
-})
-
-const archivesSpaceWidgetReducers = handleActions({
-  [actions.archivesSpace.searchSuccess](state, { payload }) { 
-    return {...state, data: payload, isLoading: false} 
-  },
-  [actions.archivesSpace.searchFailure](state, { payload }) {
-    return { ...state, error: payload, isLoading: false}
-  }
-}, initialState)
-
-// sagas
-function* searchArchivesSpace({ payload: value }) {
-  try {
-    const response = yield call(doSearch, value)
-    yield put(actions.archivesSpace.searchSuccess(response))
-  } catch (e) {
-    yield put(actions.archivesSpace.searchFailure(value))
-  }
-}
-
-const doSearch = (searchParams) => {
+const searchArchivesSpace = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
       return fetch('http://localhost:3000/gateway/aspace?q=test', {})
@@ -85,10 +48,7 @@ const ArchiveSpaceItemPresenter = ({ record, index }) => (
   </div>  
 )
 
-const mapStateToProps = (state) => {
-  const { data } = state.archivesSpaceWidgetReducers
-  return { data }
-}
+const mapStateToProps = ({ data }) => ({ data })
 
 export default connect(mapStateToProps)(ArchivesSpaceWidget)
-export { archivesSpaceWidgetReducers, searchArchivesSpace }
+export { searchArchivesSpace }

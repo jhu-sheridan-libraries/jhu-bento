@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { subspaced } from 'react-redux-subspace'
-import { bentoSearchBegin } from '../actions';
+import { searchBegin } from '../actions';
 import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
-import SolrWidget from '../widgets/SolrWidget'
+import CatalystWidget from '../widgets/CatalystWidget'
 import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
 import EdsWidget from '../widgets/EdsWidget'
 const mapStateToProps = (state) => ({})
@@ -12,14 +12,17 @@ const mapStateToProps = (state) => ({})
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: () => {
-      dispatch(bentoSearchBegin({ 
+      dispatch(searchBegin({ 
         query: 'test'
       }))
     }
   }
 }
 
-const LaraContainer = subspaced((state) => state.lara, 'lara')(LaraResourcesWidget)
+const LaraContainer = subspaced('lara')(LaraResourcesWidget)
+const CatalystContainer = subspaced('catalyst')(CatalystWidget)
+const ArchivesSpaceContainer = subspaced('aspace')(ArchivesSpaceWidget)
+const EdsContainer = subspaced('eds')(EdsWidget)
 
 class Bento extends Component {
   sendClick = () => {
@@ -35,7 +38,7 @@ class Bento extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6} lg={6}>
-            <SolrWidget />
+            <CatalystContainer />
           </Col>
           <Col xs={12} md={6} lg={6}>
             <LaraContainer />
@@ -43,10 +46,10 @@ class Bento extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6} lg={6}>
-            <ArchivesSpaceWidget />
+            <ArchivesSpaceContainer />
           </Col>
           <Col xs={12} md={6} lg={6}>
-            <EdsWidget />
+            <EdsContainer />
           </Col>          
         </Row>
       </Grid>

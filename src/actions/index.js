@@ -1,8 +1,8 @@
 import { createActions } from 'redux-actions'
 
 export const {
-  bentoSearchBegin,
-  bentoSearchCancel,
+  searchBegin,
+  searchCancel,
   searchSuccess,
   searchFailure
-} = createActions('BENTO_SEARCH_BEGIN', 'BENTO_SEARCH_CANCEL', 'SEARCH_SUCCESS', 'SEARCH_FAILURE')
+} = createActions('SEARCH_BEGIN', 'SEARCH_CANCEL', 'SEARCH_SUCCESS', 'SEARCH_FAILURE')

@@ -1,14 +1,10 @@
-import { laraWidgetReducers } from '../widgets/LaraResourcesWidget'
-import { solrWidgetReducers } from '../widgets/SolrWidget'
-import { archivesSpaceWidgetReducers } from '../widgets/ArchivesSpaceWidget'
-import { edsWidgetReducers } from '../widgets/EdsWidget'
-import searchReducers from './search'
 import { namespaced } from 'redux-subspace'
+import searchReducers from './search'
 
 const reducers = {
   lara: namespaced('lara')(searchReducers),
-  solrWidgetReducers, 
-  archivesSpaceWidgetReducers,
-  edsWidgetReducers
+  catalyst: namespaced('catalyst')(searchReducers),
+  aspace: namespaced('aspace')(searchReducers),
+  eds: namespaced('eds')(searchReducers)
 }
 export default reducers

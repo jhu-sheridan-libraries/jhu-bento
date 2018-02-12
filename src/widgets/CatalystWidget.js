@@ -1,44 +1,8 @@
 import React, { Component } from 'react'
-import Immutable from 'seamless-immutable'
-import { createActions, handleActions } from 'redux-actions'
-import 'regenerator-runtime/runtime'
-import { call, put } from 'redux-saga/effects'
 import { connect } from 'react-redux'
 
-// actions
-const actions = createActions({
-  SOLR: {
-    SEARCH_SUCCESS: data => data, // searchSuccess
-    SEARCH_FAILURE: error => error  // searchFailure
-  }
-})
-
-// reducers
-const initialState = Immutable({
-  data: {}, 
-  isLoading: false
-})
-
-const solrWidgetReducers = handleActions({
-  [actions.solr.searchSuccess](state, { payload }) { 
-    return {...state, data: payload, isLoading: false} 
-  },
-  [actions.solr.searchFailure](state, { payload }) {
-    return { ...state, error: payload, isLoading: false}
-  }
-}, initialState)
-
-// sagas
-function* searchSolr({ payload: value }) {
-  try {
-    const response = yield call(doSearch, value)
-    yield put(actions.solr.searchSuccess(response))
-  } catch (e) {
-    yield put(actions.solr.searchFailure(value))
-  }
-}
-
-const doSearch = (searchParams) => {
+// Async Search
+const searchCatalyst = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
       let params = Object.assign({wt: "json"}, searchParams.highlightParams);
@@ -82,7 +46,7 @@ const doSearch = (searchParams) => {
   })  
 }
 
-class SolrWidget extends Component {
+class CatalystWidget extends Component {
   constructor(props) {
     super(props)
   }
@@ -90,9 +54,9 @@ class SolrWidget extends Component {
   render() {
     if ('response' in this.props.data) {
       let { docs, numFound, start } = this.props.data.response
-      let Presenter = this.props.data.presenter || 'SolrItemPresenter'
+      let Presenter = this.props.data.presenter || 'CatalystItem'
       const items = docs.map((record, index) => 
-        <SolrItemPresenter key={ record.id } record={ record } index= { index+start }/>
+        <CatalystItem key={ record.id } record={ record } index= { index+start }/>
       )
       return (
         <div id={ this.props.id }>
@@ -107,7 +71,7 @@ class SolrWidget extends Component {
   }
 }
 
-const SolrItemPresenter = ({ record, index }) => (
+const CatalystItem = ({ record, index }) => (
   <div>
     <h4>
       <span>{ index + 1 }.</span>&nbsp;&nbsp;
@@ -118,10 +82,7 @@ const SolrItemPresenter = ({ record, index }) => (
   </div>  
 )
 
-const mapStateToProps = (state) => {
-  const { data } = state.solrWidgetReducers
-  return { data }
-}
+const mapStateToProps = ({ data }) => ({ data })
 
-export default connect(mapStateToProps)(SolrWidget)
-export { solrWidgetReducers, searchSolr }
+export default connect(mapStateToProps)(CatalystWidget)
+export { searchCatalyst }

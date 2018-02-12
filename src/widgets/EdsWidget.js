@@ -1,44 +1,7 @@
 import React, { Component } from 'react'
-import Immutable from 'seamless-immutable'
-import { createActions, handleActions } from 'redux-actions'
-import 'regenerator-runtime/runtime'
-import { call, put } from 'redux-saga/effects'
 import { connect } from 'react-redux'
 
-// actions
-const actions = createActions({
-  EDS: {
-    SEARCH_SUCCESS: data => data, // searchSuccess
-    SEARCH_FAILURE: error => error  // searchFailure
-  }
-})
-
-// reducers
-const initialState = Immutable({
-  data: {}, 
-  isLoading: false
-})
-
-const edsWidgetReducers = handleActions({
-  [actions.eds.searchSuccess](state, { payload }) { 
-    return {...state, data: payload, isLoading: false} 
-  },
-  [actions.eds.searchFailure](state, { payload }) {
-    return { ...state, error: payload, isLoading: false}
-  }
-}, initialState)
-
-// sagas
-function* searchEds({ payload: value }) {
-  try {
-    const response = yield call(doSearch, value)
-    yield put(actions.eds.searchSuccess(response))
-  } catch (e) {
-    yield put(actions.eds.searchFailure(value))
-  }
-}
-
-const doSearch = (searchParams) => {
+const searchEds = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
       return fetch('http://localhost:3000/gateway/eds?q=test', {})
@@ -85,10 +48,7 @@ const EdsItemPresenter = ({ record, index }) => (
   </div>  
 )
 
-const mapStateToProps = (state) => {
-  const { data } = state.edsWidgetReducers
-  return { data }
-}
+const mapStateToProps = ({ data }) => ({ data })
 
 export default connect(mapStateToProps)(EdsWidget)
-export { edsWidgetReducers, searchEds }
+export { searchEds }
