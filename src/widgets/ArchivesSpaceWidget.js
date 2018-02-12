@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const searchArchivesSpace = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
-      return fetch('http://localhost:3000/gateway/aspace?q=test', {})
+      return fetch(`http://localhost:3000/gateway/aspace?q=${ searchParams.query }`, {})
       .then(response => response.json())
       .then(json => resolve(json))
       .catch(error => reject(error))

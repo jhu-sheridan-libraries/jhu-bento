@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const searchEds = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
-      return fetch('http://localhost:3000/gateway/eds?q=test', {})
+      return fetch(`http://localhost:3000/gateway/eds?q=${ searchParams.query }`, {})
       .then(response => response.json())
       .then(json => resolve(json))
       .catch(error => reject(error))
@@ -43,7 +43,7 @@ const EdsItemPresenter = ({ record, index }) => (
     <h4>
       <span>{ index + 1 }.</span>&nbsp;&nbsp;
       <a href={ record.eds_plink }>{ record.eds_title }</a>&nbsp;&nbsp;
-      <span className='types'>{ record.eds_languages.join(', ') }, { record.eds_publication_year }</span>
+      <span className='types'>{ record.eds_languages ? record.eds_languages.join(', ') + ', ' : ''}{ record.eds_publication_year }</span>
     </h4>
   </div>  
 )
