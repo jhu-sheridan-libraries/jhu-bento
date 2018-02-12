@@ -7,15 +7,24 @@ import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import CatalystWidget from '../widgets/CatalystWidget'
 import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
 import EdsWidget from '../widgets/EdsWidget'
-const mapStateToProps = (state) => ({})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSearch: (query) => {
-      dispatch(searchBegin({ query: query }))
+const mapStateToProps = (state) => {
+  let { query } = state.bento
+  return { query }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  handleSearch: (query) => dispatch(searchBegin({ query: query }))
+})
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+  ...ownProps, ...stateProps, ...dispatchProps, handleSearch(query) {
+    // dispatch if the query is not blank and a new query
+    if (query && stateProps.query != query) {
+      dispatchProps.handleSearch(query)
     }
   }
-}
+})
 
 const LaraContainer = subspaced('lara')(LaraResourcesWidget)
 const CatalystContainer = subspaced('catalyst')(CatalystWidget)
@@ -23,18 +32,19 @@ const ArchivesSpaceContainer = subspaced('aspace')(ArchivesSpaceWidget)
 const EdsContainer = subspaced('eds')(EdsWidget)
 
 class Bento extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   handleClick = (e) => {
     e.preventDefault()
-    let value = this.refs.search.value.trim()
-    this.props.handleSearch(value)
+    this.props.handleSearch(this.refs.search.value.trim())
   }
 
   handleSearchBoxKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
-      let value = e.target.value.trim()
-      console.log(value, this.props)
-      this.props.handleSearch(value)
+      this.props.handleSearch(e.target.value.trim())
     }
   }
 
@@ -68,4 +78,4 @@ class Bento extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bento)
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Bento)

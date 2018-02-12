@@ -9,12 +9,12 @@ const initialState = Immutable({
 })
 
 const searchReducers = handleActions({
-  [actions.searchSuccess](state, { payload }) { 
-    return {...state, data: payload, isLoading: false} 
-  },
-  [actions.searchFailure](state, { payload }) {
-    return { ...state, error: payload, isLoading: false}
-  }
+  [actions.searchSuccess]: (state, { payload }) => ({ 
+    ...state, data: payload, isLoading: false
+  }),
+  [actions.searchFailure]: (state, { payload }) => ({
+    ...state, error: payload, isLoading: false
+  })
 }, initialState)
 
 export default searchReducers
