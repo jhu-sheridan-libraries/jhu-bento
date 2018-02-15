@@ -2,27 +2,27 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { subspaced } from 'react-redux-subspace'
+import qs from 'query-string'
 import { searchBegin } from '../actions';
 import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import CatalystWidget from '../widgets/CatalystWidget'
 import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
 import EdsWidget from '../widgets/EdsWidget'
 
-const mapStateToProps = (state) => {
-  let { query } = state.bento
-  return { query }
+const mapStateToProps = (state, ownProps) => {
+  let searchTerm = ''
+  if (ownProps.location.search) {
+    let params = qs.parse(ownProps.location.search)
+    searchTerm = params.q; 
+  } 
+  return { searchTerm }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSearch: (query) => dispatch(searchBegin({ query: query }))
-})
-
-const mergeProps = (stateProps, dispatchProps, ownProps) => ({
-  ...ownProps, ...stateProps, ...dispatchProps, handleSearch(query) {
-    // dispatch if the query is not blank and a new query
-    if (query && stateProps.query != query) {
-      dispatchProps.handleSearch(query)
-    }
+  handleSearch: (props, query) => { 
+    if (query && query !== props.searchTerm) {
+      dispatch(searchBegin({ query: query }))
+    }    
   }
 })
 
@@ -34,18 +34,32 @@ const EdsContainer = subspaced('eds')(EdsWidget)
 class Bento extends Component {
   constructor(props) {
     super(props)
+    if (props.searchTerm) {
+      this.state = { searchTerm: props.searchTerm }  
+    } else {
+      this.state = { searchTerm: '' }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.searchTerm) {
+      this.setState({ searchTerm: nextProps.searchTerm })
+    }
   }
 
   handleClick = (e) => {
-    e.preventDefault()
-    this.props.handleSearch(this.refs.search.value.trim())
+    this.props.handleSearch(this.props, this.state.searchTerm)
   }
 
   handleSearchBoxKeyPress = (e) => {
     if (e.key === 'Enter') {
-      e.preventDefault()
-      this.props.handleSearch(e.target.value.trim())
+      this.props.handleSearch(this.props, this.state.searchTerm)
     }
+  }
+
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({ searchTerm: e.target.value.trim() })
   }
 
   render() {
@@ -53,7 +67,7 @@ class Bento extends Component {
       <Grid fluid>
         <Row top="xs">
           <Col xs={12} md={12} lg={12}>
-            <input ref="search" type="search" placeholder="Search" onKeyPress={ this.handleSearchBoxKeyPress } />
+            <input ref="search" type="search" placeholder="Search" onKeyPress={ this.handleSearchBoxKeyPress } value={ this.state.searchTerm } onChange={ this.handleChange } />
             <button className="btn btn-primary" onClick={ this.handleClick }>Fetch</button>
           </Col>
         </Row>
@@ -78,4 +92,4 @@ class Bento extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Bento)
+export default connect(mapStateToProps, mapDispatchToProps)(Bento)

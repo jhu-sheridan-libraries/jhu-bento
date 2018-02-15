@@ -24,11 +24,14 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "history": "^4.7.2",
+    "query-string": "^5.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-flexbox-grid": "^2.0.0",
     "react-redux": "^5.0.6",
     "react-redux-subspace": "^2.3.1",
+    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",

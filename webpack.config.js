@@ -21,7 +21,8 @@ module.exports = {
     ]
   },
   devServer: {
-      contentBase: path.resolve(__dirname, "dist")      
+      contentBase: path.resolve(__dirname, "dist"),
+      historyApiFallback: true // To enable direct access to route     
   },
   devtool: 'source-map',
 };
