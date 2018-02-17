@@ -19,6 +19,7 @@ const reducers = {
   lara: namespaced('lara')(searchReducers),
   catalyst: namespaced('catalyst')(searchReducers),
   aspace: namespaced('aspace')(searchReducers),
-  eds: namespaced('eds')(searchReducers)
+  eds: namespaced('eds')(searchReducers),
+  scopus: namespaced('scopus')(searchReducers),
 }
 export default reducers

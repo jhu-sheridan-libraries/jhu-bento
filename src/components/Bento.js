@@ -8,6 +8,7 @@ import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import CatalystWidget from '../widgets/CatalystWidget'
 import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
 import EdsWidget from '../widgets/EdsWidget'
+import ScopusWidget from '../widgets/ScopusWidget';
 
 const mapStateToProps = (state, ownProps) => {
   let searchTerm = ''
@@ -30,6 +31,7 @@ const LaraContainer = subspaced('lara')(LaraResourcesWidget)
 const CatalystContainer = subspaced('catalyst')(CatalystWidget)
 const ArchivesSpaceContainer = subspaced('aspace')(ArchivesSpaceWidget)
 const EdsContainer = subspaced('eds')(EdsWidget)
+const ScopusContainer = subspaced('scopus')(ScopusWidget)
 
 class Bento extends Component {
   constructor(props) {
@@ -72,19 +74,27 @@ class Bento extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={6} lg={6}>
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#ccff66" }}>
             <CatalystContainer />
           </Col>
-          <Col xs={12} md={6} lg={6}>
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#ff9999" }}>
             <LaraContainer />
           </Col>          
         </Row>
         <Row>
-          <Col xs={12} md={6} lg={6}>
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#66ccff" }}>
             <ArchivesSpaceContainer />
           </Col>
-          <Col xs={12} md={6} lg={6}>
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#ff99ff" }}>
             <EdsContainer />
+          </Col>          
+        </Row>
+        <Row>
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#cc99ff" }}>
+            <ScopusContainer />
+          </Col>
+          <Col xs={12} md={6} lg={6}>
+            
           </Col>          
         </Row>
       </Grid>
