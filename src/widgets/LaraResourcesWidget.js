@@ -34,7 +34,7 @@ class LaraWidget extends Component {
         </div>
       )
     } else {
-      return (<div><h3>Lara Resources results will be here</h3></div>)
+      return (<div><h3>Databases results will be here</h3></div>)
     }
   }
 }
