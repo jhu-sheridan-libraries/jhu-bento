@@ -6,6 +6,7 @@ import { searchCatalyst } from '../widgets/CatalystWidget'
 import { searchArchivesSpace } from '../widgets/ArchivesSpaceWidget'
 import { searchEds } from '../widgets/EdsWidget'
 import { searchScopus } from '../widgets/ScopusWidget'
+import { searchLibAnswers } from '../widgets/LibAnswersWidget'
 import * as actions from '../actions'
 import qs from 'query-string'
 import { push } from 'react-router-redux'
@@ -40,11 +41,13 @@ function* sagas() {
     fork(takeLatest, 'SEARCH_BEGIN', search, 'aspace', searchArchivesSpace),
     fork(takeLatest, 'SEARCH_BEGIN', search, 'eds', searchEds),
     fork(takeLatest, 'SEARCH_BEGIN', search, 'scopus', searchScopus),
+    fork(takeLatest, 'SEARCH_BEGIN', search, 'libAnswers', searchLibAnswers),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'lara', searchLara),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'catalyst', searchCatalyst),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'aspace', searchArchivesSpace),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'eds', searchEds),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'scopus', searchScopus),
+    fork(takeLatest, '@@router/LOCATION_CHANGE', search, 'libAnswers', searchLibAnswers),
   ])
 }
 

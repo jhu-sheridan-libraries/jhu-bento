@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { subspaced } from 'react-redux-subspace'
 import qs from 'query-string'
-import { searchBegin } from '../actions';
+import { searchBegin } from '../actions'
 import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
 import CatalystWidget from '../widgets/CatalystWidget'
 import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
 import EdsWidget from '../widgets/EdsWidget'
-import ScopusWidget from '../widgets/ScopusWidget';
+import ScopusWidget from '../widgets/ScopusWidget'
+import LibAnswersWidget from '../widgets/LibAnswersWidget'
 
 const mapStateToProps = (state, ownProps) => {
   let searchTerm = ''
@@ -32,6 +33,7 @@ const CatalystContainer = subspaced('catalyst')(CatalystWidget)
 const ArchivesSpaceContainer = subspaced('aspace')(ArchivesSpaceWidget)
 const EdsContainer = subspaced('eds')(EdsWidget)
 const ScopusContainer = subspaced('scopus')(ScopusWidget)
+const LibAnswersContainer = subspaced('libAnswers')(LibAnswersWidget)
 
 class Bento extends Component {
   constructor(props) {
@@ -93,8 +95,8 @@ class Bento extends Component {
           <Col xs={12} md={6} lg={6} style={{ backgroundColor: "#cc99ff" }}>
             <ScopusContainer />
           </Col>
-          <Col xs={12} md={6} lg={6}>
-            
+          <Col xs={12} md={6} lg={6} style={{ backgroundColor: "yellow" }}>
+            <LibAnswersContainer />
           </Col>          
         </Row>
       </Grid>

@@ -21,5 +21,6 @@ const reducers = {
   aspace: namespaced('aspace')(searchReducers),
   eds: namespaced('eds')(searchReducers),
   scopus: namespaced('scopus')(searchReducers),
+  libAnswers: namespaced('libAnswers')(searchReducers),
 }
 export default reducers
