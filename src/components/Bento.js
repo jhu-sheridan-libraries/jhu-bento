@@ -50,18 +50,18 @@ class Bento extends Component {
   }
 
   handleClick = (e) => {
-    this.props.handleSearch(this.props, this.state.searchTerm)
+    this.props.handleSearch(this.props, this.state.searchTerm.trim())
   }
 
   handleSearchBoxKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.props.handleSearch(this.props, this.state.searchTerm)
+      this.props.handleSearch(this.props, this.state.searchTerm.trim())
     }
   }
 
   handleChange = (e) => {
     e.preventDefault()
-    this.setState({ searchTerm: e.target.value.trim() })
+    this.setState({ searchTerm: e.target.value })
   }
 
   render() {
