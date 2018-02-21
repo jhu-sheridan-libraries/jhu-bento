@@ -1,7 +1,7 @@
 *.log
 .idea
 node_modules
-dist
+dist/bundle.js
 es
 coverage
 *compiles.js
