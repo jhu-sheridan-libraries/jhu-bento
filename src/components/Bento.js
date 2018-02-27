@@ -4,12 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { subspaced } from 'react-redux-subspace'
 import qs from 'query-string'
 import { searchBegin } from '../actions'
-import LaraResourcesWidget from '../widgets/LaraResourcesWidget'
-import CatalystWidget from '../widgets/CatalystWidget'
-import ArchivesSpaceWidget from '../widgets/ArchivesSpaceWidget'
-import EdsWidget from '../widgets/EdsWidget'
-import ScopusWidget from '../widgets/ScopusWidget'
-import LibAnswersWidget from '../widgets/LibAnswersWidget'
+import widgets from '../widgets'
 
 const mapStateToProps = (state, ownProps) => {
   let searchTerm = ''
@@ -27,13 +22,6 @@ const mapDispatchToProps = (dispatch) => ({
     }    
   }
 })
-
-const LaraContainer = subspaced('lara')(LaraResourcesWidget)
-const CatalystContainer = subspaced('catalyst')(CatalystWidget)
-const ArchivesSpaceContainer = subspaced('aspace')(ArchivesSpaceWidget)
-const EdsContainer = subspaced('eds')(EdsWidget)
-const ScopusContainer = subspaced('scopus')(ScopusWidget)
-const LibAnswersContainer = subspaced('libAnswers')(LibAnswersWidget)
 
 class Bento extends Component {
   constructor(props) {
@@ -67,6 +55,10 @@ class Bento extends Component {
   }
 
   render() {
+    const containers = Object.keys(widgets).map(key => {
+      let Container = subspaced(key)(widgets[key].widget)
+      return ( <Container key={ key } />)
+    })
     return (
       <div>
         <div className="container search-container">
@@ -80,12 +72,9 @@ class Bento extends Component {
           </div>
         </div>
         <div className="main-container">
-        <CatalystContainer />
-        <LaraContainer />
-        <ArchivesSpaceContainer />
-        <EdsContainer />
-        <ScopusContainer />
-        <LibAnswersContainer />
+        { 
+          containers
+        }        
         </div>
       </div>
     )
