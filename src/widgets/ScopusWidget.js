@@ -23,18 +23,31 @@ class ScopusWidget extends Component {
     if ('search-results' in this.props.data) {
       let results = this.props.data['search-results']
       console.log('results, ', results)
-      const items = results.entry.map((record, index) => 
+      const items = results.entry.slice(0, 10).map((record, index) => 
         <ScopusItemPresenter key={ record['dc:identifier'] } record={ record } index= { index }/>
       )
       return (
-        <div id={ this.props.id }>
-          <h2>SCOPUS</h2>
-          <span>Total found: { results['opensearch:totalResults'] }</span>
-          { items }
+        <div id={ this.props.id } className='bento-box scopus'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>SCOPUS</h3>
+            <span className="count">{ results['opensearch:totalResults'] }</span>
+          </div>
+          <div className='bento-content'>
+            { items }
+          </div>
         </div>
       )
     } else {
-      return (<div>SCOPUS results will be here</div>)
+      return (
+        <div id={ this.props.id } className='bento-box scopus'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>SCOPUS</h3>
+          </div>
+          <div className='bento-content'>
+            SCOPUS results will be here
+          </div>
+        </div>
+      )
     }
   }
 }

@@ -27,14 +27,26 @@ class LaraWidget extends Component {
         <LaraItem key={ record.id } record={ record } index= { index }/>
       )
       return (
-        <div id='catalyst-result'>
-          <h2>Databases</h2>
-          <span>Total found: </span>
-          { items }
+        <div id={ this.props.id } className='bento-box libAnswers'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>Databases</h3>
+          </div>
+          <div className='bento-content'>
+            { items }
+          </div>
         </div>
       )
     } else {
-      return (<div><h3>Databases results will be here</h3></div>)
+      return (
+        <div id={ this.props.id } className='bento-box scopus'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>Databases</h3>
+          </div>
+          <div className='bento-content'>
+            Databases results will be here
+          </div>
+        </div>
+      )
     }
   }
 }
@@ -45,7 +57,7 @@ const LaraItem = ({ record, index }) => (
       <span>{ index + 1 }.</span>&nbsp;&nbsp;
       <span>{ record.attributes.name }</span>
     </h4>
-    <p>{ record.attributes.description }</p>
+    {/* <p>{ record.attributes.description }</p> */}
   </div>
 )    
 

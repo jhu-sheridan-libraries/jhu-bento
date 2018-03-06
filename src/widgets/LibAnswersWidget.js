@@ -22,19 +22,32 @@ class LibAnswersWidget extends Component {
   render() {
     if ('search' in this.props.data) {
       let { numFound, results } = this.props.data.search
-      const items = results.map((record, index) => 
+      const items = results.slice(0, 10).map((record, index) => 
         <LibAnswersItemPresenter key={ record.id } record={ record } index= { index }/>
       )
       return (
-        <div id={ this.props.id }>
-          <h2>Archives Space</h2>
-          <span>Total found: { numFound }</span>
-          { items }
+        <div id={ this.props.id } className='bento-box libAnswers'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>LibAnswers</h3>
+            <span className="count">{ numFound }</span>
+          </div>
+          <div className='bento-content'>
+            { items }
+          </div>
         </div>
       )
     } else {
-      return (<div>Lib Answers results will be here</div>)
-    }
+      return (
+        <div id={ this.props.id } className='bento-box scopus'>
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>LibAnswers</h3>
+          </div>
+          <div className='bento-content'>
+            LibAnswers results will be here
+          </div>
+        </div>
+      )
+    } 
   }
 }
 

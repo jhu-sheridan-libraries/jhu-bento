@@ -9,7 +9,7 @@ const widgets = {
   aspace:     { widget: ArchivesSpaceWidget, search: searchArchivesSpace, row: 1, col: 3 },
   catalyst:   { widget: CatalystWidget,      search: searchCatalyst,      row: 1, col: 2 },
   eds:        { widget: EdsWidet,            search: searchEds,           row: 1, col: 1 },
-  lara:       { widget: LaraResourcesWidget, search: searchCatalyst,      row: 2, col: 1 },
+  lara:       { widget: LaraResourcesWidget, search: searchLara,          row: 2, col: 1 },
   libAnswers: { widget: LibAnswersWidget,    search: searchLibAnswers,    row: 2, col: 2 },
   scopus:     { widget: ScopusWidget,        search: searchScopus,        row: 2, col: 3 },
 }

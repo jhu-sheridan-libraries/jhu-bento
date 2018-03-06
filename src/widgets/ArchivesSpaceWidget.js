@@ -27,9 +27,13 @@ class ArchivesSpaceWidget extends Component {
       )
       return (
         <div id={ this.props.id }>
-          <h2>Archives Space</h2>
-          <span>Total found: { total_hits }</span>
-          { items }
+          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
+            <h3>ArchivesSpace</h3>
+            <span className="count">{ total_hits }</span>
+          </div>
+          <div className='bento-content'>
+            { items }
+          </div>
         </div>
       )
     } else {

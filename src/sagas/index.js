@@ -6,7 +6,7 @@ import { push } from 'react-router-redux'
 import widgets from '../widgets'
 import * as actions from '../actions'
 
-// A saga to does the search 
+// A saga to do the search 
 function* search(namespace, doSearch, action) {
   let value
   if (action.type == '@@router/LOCATION_CHANGE') {
