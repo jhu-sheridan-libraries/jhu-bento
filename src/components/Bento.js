@@ -5,6 +5,7 @@ import { subspaced } from 'react-redux-subspace'
 import qs from 'query-string'
 import { searchBegin } from '../actions'
 import widgets from '../widgets'
+import '../stylesheets/bento.scss'
 
 const mapStateToProps = (state, ownProps) => {
   let searchTerm = ''

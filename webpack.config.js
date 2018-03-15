@@ -17,6 +17,11 @@ module.exports = {
             test: /\.css$/,
             loader: 'style-loader!css-loader?modules',
             include: /flexboxgrid/
+        },
+        {
+            test: /\.scss$/,
+            include: path.resolve(__dirname, 'src'),
+            loaders: ['style-loader', 'css-loader', 'sass-loader'],
         }
     ]
   },
