@@ -112,8 +112,15 @@ class Bento extends Component {
                 { this.renderWidgetContainer('libAnswers') }
               </Col>
               <Col xs={12} md={4} lg={4} >
+                { this.renderWidgetContainer('libGuides') }
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} md={4} lg={4} >
                 { this.renderWidgetContainer('scopus') }
               </Col>
+              <Col xs={12} md={4} lg={4} ></Col>
+              <Col xs={12} md={4} lg={4} ></Col>
             </Row>
           </Grid>      
         </div>

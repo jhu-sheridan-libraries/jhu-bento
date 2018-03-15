@@ -22,7 +22,6 @@ class ScopusWidget extends Component {
   render() {
     if ('search-results' in this.props.data) {
       let results = this.props.data['search-results']
-      console.log('results, ', results)
       const items = results.entry.slice(0, 10).map((record, index) => 
         <ScopusItemPresenter key={ record['dc:identifier'] } record={ record } index= { index }/>
       )
