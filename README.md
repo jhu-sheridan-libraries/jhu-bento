@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento.svg?branch=master)](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento)
+
 # Bento
 
 A React/Redux based bento box prototype for library discovery layer. 
