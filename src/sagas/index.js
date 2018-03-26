@@ -5,6 +5,7 @@ import qs from 'query-string'
 import { push } from 'react-router-redux'
 import widgets from '../widgets'
 import * as actions from '../actions'
+import { BENTO_SEARCH_BEGIN } from '../actions/constants'
 
 // A saga to do the search 
 function* search(namespace, doSearch, action) {
@@ -17,9 +18,9 @@ function* search(namespace, doSearch, action) {
   }
   try {
     const response = yield call(doSearch, value)    
-    yield put(namespacedAction(namespace)(actions.searchSuccess(response)))
+    yield put(namespacedAction(namespace)(actions.finishSearch(response)))
   } catch (e) {
-    yield put(namespacedAction(namespace)(actions.searchFailure(value)))
+    yield put(namespacedAction(namespace)(actions.failSearch(value)))
   }
 }
 
@@ -30,9 +31,9 @@ function* history({ payload: searchParams }) {
 
 function* sagas() {
   const forks = Object.keys(widgets).reduce((acc, key) => acc.concat([
-    fork(takeLatest, 'SEARCH_BEGIN', search, key, widgets[key].search),
+    fork(takeLatest, BENTO_SEARCH_BEGIN, search, key, widgets[key].search),
     fork(takeLatest, '@@router/LOCATION_CHANGE', search, key, widgets[key].search)
-  ]), [fork(takeLatest, 'SEARCH_BEGIN', history)])
+  ]), [fork(takeLatest, BENTO_SEARCH_BEGIN, history)])
   yield all(forks)
 }
 

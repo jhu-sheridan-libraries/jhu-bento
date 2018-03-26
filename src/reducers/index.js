@@ -9,8 +9,8 @@ const initialState = Immutable({
   query: ''
 })
 
-const bentoReducers = handleActions({
-  [actions.searchBegin]: (state, { payload }) => ({
+export const bentoReducer = handleActions({
+  [actions.beginSearch]: (state, { payload }) => ({
     ...state, query: payload.query
   })
 }, initialState)
