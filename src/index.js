@@ -23,7 +23,7 @@ const app = document.getElementById('app')
 render(
   <Provider store={ store }>
     <ConnectedRouter history={ history }>
-      <Route path='/bento' component={ Bento } />
+      <Route path='/' component={ Bento } />
     </ConnectedRouter>
   </Provider>, app
 )
