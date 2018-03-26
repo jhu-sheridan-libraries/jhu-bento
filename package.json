@@ -1,11 +1,11 @@
 {
-  "name": "lBento",
+  "name": "bento",
   "version": "1.0.0",
   "description": "Bento box for Library Discovery UI",
   "main": "index.js",
-  "repository": "https://github.com/jiaola/lBento",
+  "repository": "https://github.com/jhu-sheridan-libraries/jhu_bento",
   "author": "Dazhi Jiao",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "scripts": {
     "start": "webpack-dev-server",
     "test": "jest"
