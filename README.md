@@ -1,4 +1,4 @@
-# l-Bento
+# Bento
 
 A React/Redux based bento box prototype for library discovery layer. 
 
