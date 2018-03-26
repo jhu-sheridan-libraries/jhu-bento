@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -30,4 +31,7 @@ module.exports = {
       historyApiFallback: true // To enable direct access to route     
   },
   devtool: 'source-map',
+  plugins: [
+    new Dotenv()
+  ],
 };

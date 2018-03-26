@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Widget from '../components/Widget'
 
 const searchLibAnswers = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
-      return fetch(`http://localhost:3000/gateway/lib_answers?q=${ searchParams.query }`, {})
+      return fetch(`${ process.env.LIBANSWERS_API }?q=${ searchParams.query }`, {})
       .then(response => response.json())
       .then(json => resolve(json))
       .catch(error => reject(error))
@@ -14,44 +15,7 @@ const searchLibAnswers = (searchParams) => {
   })  
 }
 
-class LibAnswersWidget extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    if ('search' in this.props.data) {
-      let { numFound, results } = this.props.data.search
-      const items = results.slice(0, 10).map((record, index) => 
-        <LibAnswersItemPresenter key={ record.id } record={ record } index= { index }/>
-      )
-      return (
-        <div id={ this.props.id } className='bento-box libAnswers'>
-          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
-            <h3>LibAnswers</h3>
-            <span className="count">{ numFound }</span>
-          </div>
-          <div className='bento-content'>
-            { items }
-          </div>
-        </div>
-      )
-    } else {
-      return (
-        <div id={ this.props.id } className='bento-box scopus'>
-          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
-            <h3>LibAnswers</h3>
-          </div>
-          <div className='bento-content'>
-            LibAnswers results will be here
-          </div>
-        </div>
-      )
-    } 
-  }
-}
-
-const LibAnswersItemPresenter = ({ record, index }) => (
+const LibAnswersItem = ({ record, index }) => (
   <div>
     <h4>
       <span>{ index + 1 }.</span>&nbsp;&nbsp;
@@ -61,7 +25,26 @@ const LibAnswersItemPresenter = ({ record, index }) => (
   </div>  
 )
 
-const mapStateToProps = ({ data }) => ({ data })
+const mapStateToProps = ({ data }) => {
+  let initProps = {
+    id: 'lib_answers-bento',
+    title: 'LibAnswers',
+  }
+  if ('search' in data) {
+    let { numFound, results } = data.search
+    const items = results.slice(0, 10).map((record, index) => 
+      <LibAnswersItem key={ record.id } record={ record } index= { index }/>
+    )
+    return {
+      ...initProps, 
+      numFound,
+      items,
+      url: ''
+    } 
+  } else {
+    return initProps
+  }
+}
 
-export default connect(mapStateToProps)(LibAnswersWidget)
+export default connect(mapStateToProps)(Widget)
 export { searchLibAnswers }

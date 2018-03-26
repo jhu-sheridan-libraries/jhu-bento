@@ -63,17 +63,6 @@ class Bento extends Component {
     this.setState({ searchTerm: e.target.value })
   }
 
-  sortContainers = (widgets) => {
-    let keys = Object.keys(widgets)
-    let containers = keys.map(key => subspaced(key)(widgets[key].widget))
-    let ncol = 3
-    let nrow = Math.ceil(keys.length/ncol) // number of rows
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i]
-      let container = subspaced(key)(widgets[key].widget)
-    }
-  }
-
   renderWidgetContainer(key) {
     let Container = this.containers[key]
     return ( <Container key={key} /> )

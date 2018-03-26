@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Widget from '../components/Widget'
 
 // Async Search
 const searchLibGuides = (searchParams) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
-      let params = Object.assign({wt: "json"}, searchParams.highlightParams);
+      let params = Object.assign({ wt: "json" }, searchParams.highlightParams);
       let solrParams = {
         offset: searchParams.offset,
         limit: searchParams.limit,
-        query: `content:${searchParams.query} AND id:*guides*`,
+        query: `content:${ searchParams.query } AND id:*guides*`,
         filter: searchParams.filter,
         fields: searchParams.fetchFields, 
         facet: searchParams.facet,
@@ -19,7 +20,7 @@ const searchLibGuides = (searchParams) => {
       const reqBody = JSON.stringify(solrParams);
   
       // do the search. 'post' is required with a fetch() body. Solr doesn't mind
-      let solrSearchUrl = 'http://10.161.51.48:8983/solr/nutch/select' 
+      let solrSearchUrl = `${ process.env.LIBGUIDES_SOLR }/select`
       fetch(solrSearchUrl, {
         method: 'post',
         body: reqBody,
@@ -46,40 +47,6 @@ const searchLibGuides = (searchParams) => {
   })  
 }
 
-class LibGuidesWidget extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    if ('response' in this.props.data) {
-      let { docs, numFound, start } = this.props.data.response
-      let Presenter = this.props.data.presenter || 'LibGuidesItem'
-      const items = docs.map((record, index) => 
-        <LibGuidesItem key={ record.id } record={ record } index= { index+start }/>
-      )
-      return (
-        <div id={ this.props.id } className='bento-box catalog'>
-          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
-            <h3>LibGuides</h3>
-            <span className="count">{ numFound }</span>
-          </div>
-          <div className='bento-content'>
-            { items }
-          </div>
-        </div>
-      )
-    } else {
-      return (
-        <div id={ this.props.id } className='bento-box catalog'>
-          <h3>LibGuides</h3>
-          <div>LibGuides results will be here</div>
-        </div>
-      )
-    }
-  }
-}
-
 const LibGuidesItem = ({ record, index }) => (
   <div>
     <h4>
@@ -89,7 +56,26 @@ const LibGuidesItem = ({ record, index }) => (
   </div>  
 )
 
-const mapStateToProps = ({ data }) => ({ data })
+const mapStateToProps = ({ data }) => {
+  let initProps = {
+    id: 'lib_guides-bento',
+    title: 'LibGuides',
+  }
+  if ('response' in data) {
+    let { docs, numFound, start } = data.response
+    const items = docs.map((record, index) => 
+      <LibGuidesItem key={ record.id } record={ record } index= { index+start }/>
+    )
+    return {
+      ...initProps,
+      numFound,
+      items,
+      url: `${ process.env.LIBGUIDES_URL }?q=${ '' }`
+    }
+  } else {
+    return initProps
+  }
+}
 
-export default connect(mapStateToProps)(LibGuidesWidget)
+export default connect(mapStateToProps)(Widget)
 export { searchLibGuides }

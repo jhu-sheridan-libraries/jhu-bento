@@ -15,9 +15,19 @@ import MyNewWidget, { searchForMyNewWidget } from './MyNewWidget.js'
 ...
 const widgets = {
   ...
-  mywidget: { widget: MyNewWidget, search: searchForMyNewWidget, row: 3, col: 2 },
+  mywidget: { widget: MyNewWidget, search: searchForMyNewWidget },
 }
 export default widgets
+```
+
+Add the widget to components/Bento.js. 
+
+```
+...
+<div ...>
+{ this.renderWidgetContainer('mywidget') }
+</div>
+...
 ```
 
 That's it! If everything works as expected, the new API widget should show up at the 2nd column of the 3rd row.  
