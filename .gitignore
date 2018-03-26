@@ -7,6 +7,5 @@ coverage
 *compiles.js
 *.js.map
 __snapshots__
-
-# dotenv
 .env*
+.vscode
