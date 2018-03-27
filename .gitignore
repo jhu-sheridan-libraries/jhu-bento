@@ -9,3 +9,4 @@ coverage
 __snapshots__
 .env*
 .vscode
+coverage
