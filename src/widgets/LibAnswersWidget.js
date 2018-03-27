@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
+import { getSearchPromise } from '../selectors'
 
 const searchLibAnswers = (searchParams) => {
-  return new Promise((resolve, reject) => {
-    if (searchParams.query) {
-      return fetch(`${ process.env.LIBANSWERS_API }?q=${ searchParams.query }`, {})
-      .then(response => response.json())
-      .then(json => resolve(json))
-      .catch(error => reject(error))
-    } else {
-      return reject({error: 'emtpy search params'})
-    }
-  })  
+  let url = `${ process.env.LIBANSWERS_API }?q=${ searchParams.query }`
+  return getSearchPromise(searchParams, url)
 }
 
 const LibAnswersItem = ({ record, index }) => (
