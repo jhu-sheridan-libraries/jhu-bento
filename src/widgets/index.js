@@ -7,13 +7,13 @@ import ScopusWidget, { searchScopus } from './ScopusWidget'
 import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget';
 
 const widgets = {
-  aspace:     { widget: ArchivesSpaceWidget, search: searchArchivesSpace, row: 1, col: 3 },
-  catalyst:   { widget: CatalystWidget,      search: searchCatalyst,      row: 1, col: 2 },
-  eds:        { widget: EdsWidet,            search: searchEds,           row: 1, col: 1 },
-  lara:       { widget: LaraResourcesWidget, search: searchLara,          row: 2, col: 1 },
-  libAnswers: { widget: LibAnswersWidget,    search: searchLibAnswers,    row: 2, col: 2 },
-  scopus:     { widget: ScopusWidget,        search: searchScopus,        row: 2, col: 3 },
-  libGuides:  { widget: LibGuidesWidget,     search: searchLibGuides,     row: 3, col: 1 },
+  aspace:     { widget: ArchivesSpaceWidget, search: searchArchivesSpace  },
+  catalyst:   { widget: CatalystWidget,      search: searchCatalyst },
+  eds:        { widget: EdsWidet,            search: searchEds },
+  lara:       { widget: LaraResourcesWidget, search: searchLara },
+  libAnswers: { widget: LibAnswersWidget,    search: searchLibAnswers },
+  scopus:     { widget: ScopusWidget,        search: searchScopus },
+  libGuides:  { widget: LibGuidesWidget,     search: searchLibGuides },
 }
 
 export default widgets
