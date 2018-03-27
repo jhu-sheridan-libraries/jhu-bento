@@ -6,6 +6,40 @@
 
 A React/Redux based bento box prototype for library discovery layer. 
 
+## Quick start
+
+To set up the application, first install the docker images. 
+
+Then install nodejs and yarn. On mac, you may use brew to install both. 
+
+Install node modules
+
+```
+cd jhu_bento
+yarn install
+```
+
+Start the webpack server
+
+```
+yarn start
+```
+
+Now you can look at the application at http://127.0.0.1:8080/
+
+## Development
+
+Start the webpack server,
+
+```
+cd jhu_bento
+yarn start
+```
+
+Use your favorite editor to edit files. Any change to `/src` would be automatically loaded in the browser. 
+
+## Add a widget
+
 To add a new API widget, do the following: 
 
 1. Create a new file in src/widgets. The widget has to define two things: 
