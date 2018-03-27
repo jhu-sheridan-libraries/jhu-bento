@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
-import { getSearchPromise } from '../selectors';
+import { getApiSearchPromise } from '../selectors';
 
 const searchEds = (searchParams) => {
   let url = `${ process.env.EDS_API }?q=${ searchParams.query }`
-  return getSearchPromise(searchParams, url)
+  return getApiSearchPromise(searchParams, url)
 }
 
 const EdsItemPresenter = ({ record, index }) => (

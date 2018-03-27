@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
-import { getSearchPromise } from '../selectors';
+import { getApiSearchPromise } from '../selectors';
 
 const searchLara = (searchParams) => {
   let url = `${ process.env.LARA_API }?page[size]=10&filter[keyword]=${ searchParams.query }`
-  return getSearchPromise(searchParams, url)
+  return getApiSearchPromise(searchParams, url)
 }
 
 const LaraItem = ({ record, index }) => (

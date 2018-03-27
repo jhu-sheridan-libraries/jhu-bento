@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
-import { getSearchPromise } from '../selectors'
+import { getApiSearchPromise } from '../selectors'
 
 const searchLibAnswers = (searchParams) => {
   let url = `${ process.env.LIBANSWERS_API }?q=${ searchParams.query }`
-  return getSearchPromise(searchParams, url)
+  return getApiSearchPromise(searchParams, url)
 }
 
 const LibAnswersItem = ({ record, index }) => (
