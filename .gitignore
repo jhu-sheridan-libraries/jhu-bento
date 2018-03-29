@@ -10,3 +10,5 @@ __snapshots__
 .env*
 .vscode
 coverage
+.DS_Store
+src/.DS_Store
