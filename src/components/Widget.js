@@ -12,9 +12,9 @@ class Widget extends Component {
         <div id={ this.props.id } className='bento-box'>
           <div className='bento-box-header' style={{ cursor: 'pointer' }}>
             <h3>{ this.props.title }</h3>
-            <div className='bento-content'>
-              Please submit a search
-            </div>
+          </div>
+          <div className='bento-content'>
+            Please submit a search
           </div>
         </div>
       )
