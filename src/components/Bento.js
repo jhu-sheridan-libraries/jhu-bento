@@ -12,17 +12,17 @@ const mapStateToProps = (state, ownProps) => {
   // maps the query parameter from route to props
   if (ownProps.location.search) {
     let params = qs.parse(ownProps.location.search)
-    searchTerm = params.q; 
-  } 
+    searchTerm = params.q;
+  }
   return { searchTerm }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSearch: (props, query) => { 
+  handleSearch: (props, query) => {
     // dispatch search for a new query
     if (query && query !== props.searchTerm) {
       dispatch(beginSearch({ query: query }))
-    }    
+    }
   }
 })
 
@@ -32,7 +32,7 @@ class Bento extends Component {
   constructor(props) {
     super(props)
     if (props.searchTerm) {
-      this.state = { ...initialState, searchTerm: props.searchTerm }  
+      this.state = { ...initialState, searchTerm: props.searchTerm }
     } else {
       this.state = initialState
     }
@@ -82,37 +82,27 @@ class Bento extends Component {
           </div>
         </div>
         <div className="main-container">
-          <Grid fluid>
-            <Row>
-              <Col xs={12} md={4} lg={4} >
+              <div>
                 { this.renderWidgetContainer('catalyst') }
-              </Col>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('aspace') }
-              </Col>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('eds') }
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('lara') }
-              </Col>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('libAnswers') }
-              </Col>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('libGuides') }
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} md={4} lg={4} >
+              </div>
+              <div>
                 { this.renderWidgetContainer('scopus') }
-              </Col>
-              <Col xs={12} md={4} lg={4} ></Col>
-              <Col xs={12} md={4} lg={4} ></Col>
-            </Row>
-          </Grid>      
+              </div>
         </div>
       </div>
     )

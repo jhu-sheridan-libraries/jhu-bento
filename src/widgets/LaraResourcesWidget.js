@@ -9,13 +9,10 @@ const searchLara = (searchParams) => {
 }
 
 const LaraItem = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <span>{ record.attributes.name }</span>
-    </h4>
+  <div className='item'>
+      <span className='itemTitle'>{ record.attributes.name }</span>
   </div>
-)    
+)
 
 const mapStateToProps = ({ data }) => {
   let initProps = {
@@ -26,15 +23,15 @@ const mapStateToProps = ({ data }) => {
     let meta = data.meta, records = data.data
     let start = meta.page_size * (meta.current_page - 1)
     let numFound = meta.total_count
-    const items = records.map((record, index) => 
+    const items = records.map((record, index) =>
       <LaraItem key={ record.id } record={ record } index= { index + start }/>
     )
     return {
-      ...initProps, 
+      ...initProps,
       numFound,
       items,
       url: ''
-    } 
+    }
   } else {
     return initProps
   }

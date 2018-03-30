@@ -9,12 +9,9 @@ const searchScopus = (searchParams) => {
 }
 
 const ScopusItemPresenter = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <a href={ selectUrl(record) }>{ record['dc:title'] }</a>&nbsp;&nbsp;      
-    </h4>
-  </div>  
+  <div className='item'>
+      <span className='itemTitle'><a href={ selectUrl(record) }>{ record['dc:title'] }</a></span>
+  </div>
 )
 
 const selectUrl = (record) => {
@@ -33,7 +30,7 @@ const mapStateToProps = ({ data }) => {
   }
   if ('search-results' in data) {
     let results = data['search-results']
-    const items = results.entry.slice(0, 10).map((record, index) => 
+    const items = results.entry.slice(0, 10).map((record, index) =>
       <ScopusItemPresenter key={ record['dc:identifier'] } record={ record } index= { index }/>
     )
     return {

@@ -13,7 +13,7 @@ class Widget extends Component {
           <div className='bento-box-header' style={{ cursor: 'pointer' }}>
             <h3>{ this.props.title }</h3>
           </div>
-          <div className='bento-content'>
+          <div className='no-search'>
             Please submit a search
           </div>
         </div>
@@ -26,10 +26,10 @@ class Widget extends Component {
             <span className='count'><a href={ this.props.url }>{ this.props.numFound.toLocaleString('en') } Results</a></span>
           </div>
           <div className='bento-content'>
-            { this.props.items.length ? this.props.items : 'No results found' }
+            { this.props.items.length ? this.props.items : <div className='no-results'>No results found</div> }
           </div>
-          <div className='moreResults'>
-          <a href={ this.props.url }>Explore More Results</a>
+          <div className='more-results'>
+              <a href={ this.props.url }>Explore More Results</a>
           </div>
         </div>
       )
