@@ -9,13 +9,14 @@ const searchArchivesSpace = (searchParams) => {
 }
 
 const ArchiveSpaceItemPresenter = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <a href={ process.env.ARCHIVESSPACE_URL + record.uri }>{ record.title }</a>&nbsp;&nbsp;
-      <span className='types'>{ record.level }, { record.child_container_u_sstr }</span>
-    </h4>
-  </div>  
+  <div className='item'>
+      <a href={ process.env.ARCHIVESSPACE_URL + record.uri }>
+        <div className='itemTitle' >
+          { record.title }
+        </div>
+        <span className='types'>{ record.level }, { record.child_container_u_sstr }</span>
+      </a>
+  </div>
 )
 
 const mapStateToProps = ({ data }) => {
@@ -25,7 +26,7 @@ const mapStateToProps = ({ data }) => {
   }
   if ('results' in data) {
     let { results, total_hits } = data
-    const items = results.map((record, index) => 
+    const items = results.map((record, index) =>
       <ArchiveSpaceItemPresenter key={ record.id } record={ record } index= { index }/>
     )
     return {

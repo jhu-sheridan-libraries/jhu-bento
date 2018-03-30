@@ -9,12 +9,9 @@ const searchLibGuides = (searchParams) => {
 }
 
 const LibGuidesItem = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <a href={ record.url }>{ record.title }</a>&nbsp;&nbsp;
-    </h4>
-  </div>  
+  <div className='item'>
+      <span className='itemTitle'><a href={ record.url }>{ record.title }</a></span>
+  </div>
 )
 
 const mapStateToProps = ({ data }) => {
@@ -24,7 +21,7 @@ const mapStateToProps = ({ data }) => {
   }
   if ('response' in data) {
     let { docs, numFound, start } = data.response
-    const items = docs.map((record, index) => 
+    const items = docs.map((record, index) =>
       <LibGuidesItem key={ record.id } record={ record } index= { index+start }/>
     )
     return {

@@ -1,3 +1,140 @@
-.bento-box h3 {
-  color: green;
+//** Masonry Layout **//
+
+.main-container {
+  column-count: 3;
+  column-gap: 1em;
+  margin-left: 15px;
+  margin-right: -1em;
 }
+
+.bento-box {
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  a {
+    display:block;
+    text-decoration:none;
+    &:visited {
+      color: #666;
+    }
+  }
+}
+
+#catalyst-bento {
+  background-color: #74AA50;
+}
+#eds-bento {
+  background-color: #470A68;
+}
+#scopus-bento {
+  background-color: #470A68;
+}
+#archivesspace-bento {
+  background-color: #003D4C;
+}
+#lara-bento {
+  background-color: #005EB8;
+}
+#lib_answers-bento {
+  background-color: #8E3A80;
+}
+#lib_guides-bento {
+  background-color: #74AA50;
+}
+
+.bento-box-header {
+  padding: 18px;
+  color: #fff;
+  a {
+    color: #fff;
+    &:visited {
+      color: #fff;
+    }
+  }
+  h3 {
+    margin:0;
+    padding:0;
+  }
+}
+
+.no-search {
+  background-color: #fff;
+  padding: 10px 12px;
+}
+
+.no-results {
+  background-color: #fff;
+  padding: 10px 12px;
+}
+
+.item {
+  background-color: #fff;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  display: block;
+  &:hover {
+    background-color: #efefef;
+    color:#222;
+    text-decoration: none;
+  }
+}
+
+.itemTitle {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-bottom: 5px;
+}
+
+.more-results {
+  font-size: 1.2em;
+  padding: 10px 8px;
+  background-color: #4A484C;
+  a {
+    color: #fff;
+    display:block;
+    text-decoration:none;
+    &:visited {
+      color: #fff;
+    }
+  }
+}
+
+//**Responsive Layouts**//
+
+/* Larger than mobile */
+@media (min-width: 0px) {
+  .main-container {
+      -moz-column-count: 1;
+      -webkit-column-count: 1;
+      column-count: 1;
+      margin-right:0;
+  }
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  .main-container {
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      column-count: 2;
+      margin-right:1em;
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .main-container {
+      -moz-column-count: 3;
+      -webkit-column-count: 3;
+      column-count: 3;
+      margin-right: -1em;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}

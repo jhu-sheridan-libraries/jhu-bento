@@ -9,14 +9,15 @@ const searchCatalyst = (searchParams) => {
 }
 
 const CatalystItem = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <a href={`${ process.env.CATALYST_URL }/${ record.id }`}>{ record.title_display }</a>&nbsp;&nbsp;
-      <span className='types'>{ record.format.join(', ') }</span>&nbsp;
-      <span>{ record.pub_date }</span>
-    </h4>
-  </div>  
+    <div className='item'>
+      <a href={`${ process.env.CATALYST_URL }/${ record.id }`}>
+        <div className='itemTitle' >
+          { record.title_display }
+        </div>
+        <span className='types'>{ record.format.join(', ') }</span>&nbsp;
+        <span>({ record.pub_date })</span>
+      </a>
+    </div>
 )
 
 const mapStateToProps = ({ data }) => {
@@ -26,7 +27,7 @@ const mapStateToProps = ({ data }) => {
   }
   if ('response' in data) {
     let { docs, numFound, start } = data.response
-    const items = docs.map((record, index) => 
+    const items = docs.map((record, index) =>
       <CatalystItem key={ record.id } record={ record } index= { index+start }/>
     )
     return {

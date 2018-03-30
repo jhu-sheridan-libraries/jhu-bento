@@ -9,13 +9,10 @@ const searchLibAnswers = (searchParams) => {
 }
 
 const LibAnswersItem = ({ record, index }) => (
-  <div>
-    <h4>
-      <span>{ index + 1 }.</span>&nbsp;&nbsp;
-      <a href={ record.url }>{ record.question }</a>&nbsp;&nbsp;
+  <div className='item'>
+      <span className='itemTitle'><a href={ record.url }>{ record.question }</a></span>
       <span className='types'>{ record.topics.join(', ') }</span>
-    </h4>
-  </div>  
+  </div>
 )
 
 const mapStateToProps = ({ data }) => {
@@ -25,15 +22,15 @@ const mapStateToProps = ({ data }) => {
   }
   if ('search' in data) {
     let { numFound, results } = data.search
-    const items = results.slice(0, 10).map((record, index) => 
+    const items = results.slice(0, 10).map((record, index) =>
       <LibAnswersItem key={ record.id } record={ record } index= { index }/>
     )
     return {
-      ...initProps, 
+      ...initProps,
       numFound,
       items,
       url: ''
-    } 
+    }
   } else {
     return initProps
   }
