@@ -1,4 +1,5 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -26,12 +27,9 @@ module.exports = {
         }
     ]
   },
-  devServer: {
-      contentBase: path.resolve(__dirname, "public"),
-      historyApiFallback: true // To enable direct access to route     
-  },
   devtool: 'source-map',
   plugins: [
-    new Dotenv()
+    new Dotenv(),
+    new CleanWebpackPlugin(['public/bundle.js', 'public/bundle.js.map'])
   ],
 };
