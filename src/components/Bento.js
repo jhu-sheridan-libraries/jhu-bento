@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Row, Col } from 'react-flexbox-grid'
 import { subspaced } from 'react-redux-subspace'
 import qs from 'query-string'
 import { beginSearch } from '../actions'

@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento.svg?branch=master)](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento)
 [![Maintainability](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/maintainability)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu_bento/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/test_coverage)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu_bento/test_coverage)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/jhu-sheridan-libraries/jhu_bento.svg)](https://beta.gemnasium.com/projects/github.com/jhu-sheridan-libraries/jhu_bento)
 
 # Bento
 

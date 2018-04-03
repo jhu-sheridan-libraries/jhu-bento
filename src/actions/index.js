@@ -1,4 +1,4 @@
-import { createActions, createAction } from 'redux-actions'
+import { createAction } from 'redux-actions'
 import * as actionTypes from './constants'
 // defines common action creators for the bento box app. 
 // action creators for individual widgets should be defined in the widget, not here. 
