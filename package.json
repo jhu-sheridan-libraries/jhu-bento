@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/jhu-sheridan-libraries/jhu_bento",
   "author": "Dazhi Jiao",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "webpack-dev-server",
     "test": "jest"
@@ -41,17 +41,17 @@
     "dotenv-webpack": "^1.5.5",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
-    "query-string": "^5.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "query-string": "^6.0.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-flexbox-grid": "^2.0.0",
-    "react-redux": "^5.0.6",
-    "react-redux-subspace": "^2.3.1",
+    "react-redux": "^5.0.7",
+    "react-redux-subspace": "^2.4.0",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1",
+    "redux-actions": "^2.3.0",
     "redux-saga": "^0.16.0",
-    "redux-subspace": "^2.3.1",
-    "seamless-immutable": "^7.1.2"
+    "redux-subspace": "^2.4.0",
+    "seamless-immutable": "^7.1.3"
   }
 }
