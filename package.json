@@ -27,6 +27,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
+    "dotenv-webpack": "^1.5.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",
@@ -43,12 +44,11 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
-    "dotenv-webpack": "^1.5.5",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "query-string": "^6.0.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-redux-subspace": "^2.4.0",
     "react-router-redux": "^5.0.0-alpha.9",
