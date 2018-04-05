@@ -4,7 +4,8 @@ import EdsWidet, { searchEds } from './EdsWidget'
 import LaraResourcesWidget, { searchLara } from './LaraResourcesWidget'
 import LibAnswersWidget, { searchLibAnswers } from './LibAnswersWidget'
 import ScopusWidget, { searchScopus } from './ScopusWidget'
-import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget';
+import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget'
+import FinditWidget, { searchFindit } from './FinditWidget'
 
 const widgets = {
   aspace:     { widget: ArchivesSpaceWidget, search: searchArchivesSpace  },
@@ -14,6 +15,7 @@ const widgets = {
   libAnswers: { widget: LibAnswersWidget,    search: searchLibAnswers },
   scopus:     { widget: ScopusWidget,        search: searchScopus },
   libGuides:  { widget: LibGuidesWidget,     search: searchLibGuides },
+  findit:     { widget: FinditWidget,        search: searchFindit },
 }
 
 export default widgets
