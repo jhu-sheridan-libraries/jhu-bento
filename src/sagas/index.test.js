@@ -14,7 +14,7 @@ describe('Saga', () => {
         payload: query
       }
       const doSearch = value => ({ value })
-      return expectSaga(search, namespace, doSearch, action)
+      expectSaga(search, namespace, doSearch, action)
         .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_FINISH }`, payload: { value: query }})
         .run()
     })
@@ -29,9 +29,10 @@ describe('Saga', () => {
         type: actionTypes.BENTO_SEARCH_BEGIN,
         payload: { query: searchTerm }
       }
-      return expectSaga(history, action)
+      expectSaga(history, action)
         .put({ search: `q=${ searchTerm }` })
         .run()
+      Saga.__ResetDependency__('push')
     })
   })
 })
