@@ -5,6 +5,16 @@ import * as actionTypes from './constants'
 describe('Bento search actions', () => {
   let value = faker.lorem.word()
 
+  describe('BENTO_SEARCH', () => {
+    it('should create an action to search', () => {
+      let expectedAction = {
+        type: actionTypes.BENTO_SEARCH,
+        payload: value
+      }
+      expect(actions.search(value)).toEqual(expectedAction)
+    })
+  })
+
   describe('BENTO_SEARCH_BEGIN', () => {
     it('should create an action to begin search', () => {
       let expectedAction = {
@@ -28,7 +38,7 @@ describe('Bento search actions', () => {
   describe('BENTO_SEARCH_FINISH', () => {
     it('should create an action to finish a search', () => {
       let expectedAction = {
-        type: actionTypes.BENTO_SEARCH_FINISH,
+        type: actionTypes.BENTO_SEARCH_SUCCESS,
         payload: value
       }
       expect(actions.finishSearch(value)).toEqual(expectedAction)
@@ -38,7 +48,7 @@ describe('Bento search actions', () => {
   describe('BENTO_SEARCH_FAIL', () => {
     it('should create an action to fail a search', () => {
       let expectedAction = {
-        type: actionTypes.BENTO_SEARCH_FAIL,
+        type: actionTypes.BENTO_SEARCH_ERROR,
         payload: value
       }
       expect(actions.failSearch(value)).toEqual(expectedAction)

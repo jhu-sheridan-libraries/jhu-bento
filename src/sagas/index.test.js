@@ -10,12 +10,12 @@ describe('Saga', () => {
       let namespace = faker.lorem.word()
       let query = faker.lorem.word()
       let action = {
-        type: actionTypes.BENTO_SEARCH_BEGIN,
+        type: actionTypes.BENTO_SEARCH,
         payload: query
       }
       const doSearch = value => ({ value })
       expectSaga(search, namespace, doSearch, action)
-        .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_FINISH }`, payload: { value: query }})
+        .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_SUCCESS }`, payload: { value: query }})
         .run()
     })
   })
@@ -26,7 +26,7 @@ describe('Saga', () => {
       const history = Saga.__get__('history')
       let searchTerm = faker.lorem.word()
       let action = {
-        type: actionTypes.BENTO_SEARCH_BEGIN,
+        type: actionTypes.BENTO_SEARCH,
         payload: { query: searchTerm }
       }
       expectSaga(history, action)
