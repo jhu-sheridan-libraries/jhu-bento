@@ -5,7 +5,8 @@ import Widget from '../components/Widget'
 const searchLibGuides = (searchParams) => {
   let url = `${ process.env.CATALYST_SOLR }/select`
   let query = `content:${ searchParams.query } AND id:*guides*`
-  return getSolrSearchPromise(searchParams, query, url)
+  let lgSearchParams = { ...searchParams, query }
+  return getSolrSearchPromise(lgSearchParams, url)
 }
 
 const LibGuidesItem = ({ record, index }) => (
