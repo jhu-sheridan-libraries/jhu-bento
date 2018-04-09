@@ -8,14 +8,14 @@ import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget'
 import FinditWidget, { searchFindit } from './FinditWidget'
 
 const widgets = {
-  aspace:     { widget: ArchivesSpaceWidget, search: searchArchivesSpace  },
-  catalyst:   { widget: CatalystWidget,      search: searchCatalyst },
-  eds:        { widget: EdsWidet,            search: searchEds },
-  lara:       { widget: LaraResourcesWidget, search: searchLara },
-  libAnswers: { widget: LibAnswersWidget,    search: searchLibAnswers },
-  scopus:     { widget: ScopusWidget,        search: searchScopus },
-  libGuides:  { widget: LibGuidesWidget,     search: searchLibGuides },
-  findit:     { widget: FinditWidget,        search: searchFindit },
+  aspace:     { widget: ArchivesSpaceWidget, api: searchArchivesSpace  },
+  catalyst:   { widget: CatalystWidget,      api: searchCatalyst },
+  eds:        { widget: EdsWidet,            api: searchEds },
+  lara:       { widget: LaraResourcesWidget, api: searchLara },
+  libAnswers: { widget: LibAnswersWidget,    api: searchLibAnswers },
+  scopus:     { widget: ScopusWidget,        api: searchScopus },
+  libGuides:  { widget: LibGuidesWidget,     api: searchLibGuides },
+  findit:     { widget: FinditWidget,        api: searchFindit },
 }
 
 export default widgets

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { subspaced } from 'react-redux-subspace'
 import qs from 'query-string'
-import { beginSearch } from '../actions'
+import { search } from '../actions'
 import widgets from '../widgets'
 import '../stylesheets/bento.scss'
 
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleSearch: (props, query) => {
     // dispatch search for a new query
     if (query && query !== props.searchTerm) {
-      dispatch(beginSearch({ query: query }))
+      dispatch(search({ query: query }))
     }
   }
 })
