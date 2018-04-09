@@ -24,12 +24,16 @@ function* search(namespace, doSearch, action) {
   }
 }
 
+//** Push to history in react router */
 function* history({ payload: searchParams }) {
   let searchString = qs.stringify({ q: searchParams.query })
   yield put(push({ search: searchString }))
 }
 
 function* sagas() {
+  // Create a pair of forked sagas for each widget:  
+  // One fork is for user inititiated search; 
+  // The other is for starting search by changing the browser location
   const forks = Object.keys(widgets).reduce((acc, key) => acc.concat([
     fork(takeLatest, BENTO_SEARCH_BEGIN, search, key, widgets[key].search),
     fork(takeLatest, LOCATION_CHANGE, search, key, widgets[key].search)

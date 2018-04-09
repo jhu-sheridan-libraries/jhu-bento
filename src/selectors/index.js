@@ -11,14 +11,14 @@ export const getApiSearchPromise = (searchParams, url) => {
   }) 
 }
 
-export const getSolrSearchPromise = (searchParams, query, url) => {
+export const getSolrSearchPromise = (searchParams, url) => {
   return new Promise((resolve, reject) => {
     if (searchParams.query) {
       let params = Object.assign({ wt: "json" }, searchParams.highlightParams);
       let solrParams = {
         offset: searchParams.offset,
         limit: searchParams.limit,
-        query,
+        query: searchParams.query,
         filter: searchParams.filter,
         fields: searchParams.fetchFields, 
         facet: searchParams.facet,

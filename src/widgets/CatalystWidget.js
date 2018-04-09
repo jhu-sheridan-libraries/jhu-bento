@@ -5,7 +5,7 @@ import { getSolrSearchPromise } from '../selectors';
 
 const searchCatalyst = (searchParams) => {
   let url = `${ process.env.CATALYST_SOLR }/select`
-  return getSolrSearchPromise(searchParams, searchParams.query, url)
+  return getSolrSearchPromise(searchParams, url)
 }
 
 const CatalystItem = ({ record, index }) => (
