@@ -4,7 +4,7 @@ import { __RewireAPI__ as Saga } from './index'
 import * as actionTypes from '../actions/constants'
 
 describe('Saga', () => {
-  describe('Saga search function', () => {
+  describe('search saga', () => {
     it('calls doSearch function and return a namespaced action', () => {
       const search = Saga.__get__('search')
       let namespace = faker.lorem.word()
@@ -16,6 +16,21 @@ describe('Saga', () => {
       const doSearch = value => ({ value })
       return expectSaga(search, namespace, doSearch, action)
         .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_FINISH }`, payload: { value: query }})
+        .run()
+    })
+  })
+
+  describe('history saga', () => {
+    it('pushes a record to history', () => {
+      const push = Saga.__set__('push', value => value)
+      const history = Saga.__get__('history')
+      let searchTerm = faker.lorem.word()
+      let action = {
+        type: actionTypes.BENTO_SEARCH_BEGIN,
+        payload: { query: searchTerm }
+      }
+      return expectSaga(history, action)
+        .put({ search: `q=${ searchTerm }` })
         .run()
     })
   })
