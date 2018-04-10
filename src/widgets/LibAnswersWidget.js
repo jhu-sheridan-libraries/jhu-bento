@@ -15,7 +15,7 @@ const LibAnswersItem = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lib_answers-bento',
     title: 'LibAnswers',
@@ -29,10 +29,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound,
       items,
-      url: ''
+      url: '',
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

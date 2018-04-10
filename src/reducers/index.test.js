@@ -11,7 +11,7 @@ describe('search reducer', () => {
 
   it('should handle BENTO_SEARCH_BEGIN', () => {
     const action = {
-      type: actionTypes.BENTO_SEARCH_BEGIN,
+      type: actionTypes.BENTO_SEARCH,
       payload: { query: value }
     }
     // it's empty on purpose because it's just starting to fetch posts

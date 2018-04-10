@@ -5,15 +5,18 @@ import { combineReducers } from 'redux'
 
 const initialState = Immutable({
   data: {}, 
-  isLoading: false
+  isFetching: false
 })
 
 const searchReducers = handleActions({
+  [actions.beginSearch]: (state, { payload }) => ({
+    ...state, data: payload, isFetching: true
+  }),
   [actions.finishSearch]: (state, { payload }) => ({ 
-    ...state, data: payload, isLoading: false
+    ...state, data: payload, isFetching: false
   }),
   [actions.failSearch]: (state, { payload }) => ({
-    ...state, error: payload, isLoading: false
+    ...state, error: payload, isFetching: false
   })
 }, initialState)
 

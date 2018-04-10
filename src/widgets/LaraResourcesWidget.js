@@ -14,7 +14,7 @@ const LaraItem = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lara-bento',
     title: 'Databases',
@@ -30,10 +30,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound,
       items,
-      url: ''
+      url: '',
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

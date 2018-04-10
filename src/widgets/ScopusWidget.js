@@ -23,7 +23,7 @@ const selectUrl = (record) => {
   return ''
 }
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'scopus-bento',
     title: 'SCOPUS'
@@ -37,10 +37,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound: Number(results['opensearch:totalResults']),
       items,
-      url: ''
+      url: '',
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

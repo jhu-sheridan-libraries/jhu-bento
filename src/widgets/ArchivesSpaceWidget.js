@@ -19,7 +19,7 @@ const ArchiveSpaceItemPresenter = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'archivesspace-bento',
     title: 'ArchivesSpace'
@@ -32,10 +32,11 @@ const mapStateToProps = ({ data }) => {
     return {
       ...initProps,
       numFound: total_hits,
-      items
+      items,
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

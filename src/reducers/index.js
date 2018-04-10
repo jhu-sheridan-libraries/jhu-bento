@@ -10,11 +10,12 @@ const initialState = Immutable({
 })
 
 export const bentoReducer = handleActions({
-  [actions.beginSearch]: (state, { payload }) => ({
+  [actions.search]: (state, { payload }) => ({
     ...state, query: payload.query
   })
 }, initialState)
 
+// Create namespaced reducers for each widget
 const reducers = Object.keys(widgets).reduce((acc, key) => {
   acc[key] = namespaced(key)(searchReducers)
   return acc
