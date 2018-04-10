@@ -36,7 +36,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       numFound,
       items,
       isFetching,
-      url: `${ process.env.CATALYST_URL }?search_field=all_fields&q=`,
+      linkOut: `${ process.env.CATALYST_URL }?search_field=all_fields&q=`,
     }
   } else {
     return { ...initProps, isFetching }

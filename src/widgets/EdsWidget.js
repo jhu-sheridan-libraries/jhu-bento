@@ -33,7 +33,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound: results.SearchResult.Statistics.TotalHits,
       items,
-      url: '',
+      linkOut: '',
       isFetching,
     }
   } else {

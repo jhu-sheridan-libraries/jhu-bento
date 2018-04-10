@@ -29,7 +29,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound,
       items,
-      url: `${ process.env.LIBGUIDES_URL }?q=${ '' }`,
+      linkOut: `${ process.env.LIBGUIDES_URL }?q=${ '' }`,
       isFetching,
     }
   } else {

@@ -29,7 +29,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound,
       items,
-      url: '',
+      linkOut: '',
       isFetching,
     }
   } else {

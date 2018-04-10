@@ -37,7 +37,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound: Number(results['opensearch:totalResults']),
       items,
-      url: '',
+      linkOut: '',
       isFetching,
     }
   } else {

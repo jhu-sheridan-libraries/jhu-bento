@@ -28,7 +28,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound: data.length, // TODO: Update after Umlaut API change
       items,
-      url: '',
+      linkOut: '',
       isFetching,
     }
   } else {

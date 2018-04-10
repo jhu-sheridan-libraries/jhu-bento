@@ -45,7 +45,7 @@ Widget.propTypes = {
   title: PropTypes.string,
   items: PropTypes.array,
   numFound: PropTypes.number,
-  url: PropTypes.string,
+  linkOut: PropTypes.string,
   isFetching: PropTypes.bool,
 }
 
