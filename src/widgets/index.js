@@ -6,6 +6,7 @@ import LibAnswersWidget, { searchLibAnswers } from './LibAnswersWidget'
 import ScopusWidget, { searchScopus } from './ScopusWidget'
 import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget'
 import FinditWidget, { searchFindit } from './FinditWidget'
+import '../stylesheets/widget.scss'
 
 const widgets = {
   aspace:     { widget: ArchivesSpaceWidget, api: searchArchivesSpace  },
