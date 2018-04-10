@@ -1,13 +1,14 @@
 import faker from 'faker'
-import { bentoReducer } from './index'
+import { bentoReducer, __RewireAPI__ as RewiredApi } from './index'
 import * as actionTypes from '../actions/constants'
 
 describe('search reducer', () => {
   let value = faker.lorem.word()
 
-  it('should return the initial state'), () => {
-    expect(reducer(undefined, {}).toEqual({}))
-  }
+  it('should return the initial state', () => {
+    let initialState = RewiredApi.__get__('initialState')
+    expect(bentoReducer(undefined, {})).toEqual(initialState)
+  })
 
   it('should handle BENTO_SEARCH_BEGIN', () => {
     const action = {
