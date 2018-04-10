@@ -46,12 +46,14 @@ describe('Bento search actions', () => {
   })
 
   describe('BENTO_SEARCH_FAIL', () => {
-    it('should create an action to fail a search', () => {
+    it('should create an action and set action.error to true', () => {
+      let error = new TypeError(value)
       let expectedAction = {
         type: actionTypes.BENTO_SEARCH_ERROR,
-        payload: value
+        payload: error,
+        error: true
       }
-      expect(actions.failSearch(value)).toEqual(expectedAction)
+      expect(actions.failSearch(error)).toEqual(expectedAction)
     })
   })
 })
