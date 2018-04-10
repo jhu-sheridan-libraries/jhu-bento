@@ -14,7 +14,7 @@ const FinditItem = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'findit-bento',
     title: 'Findit',
@@ -28,10 +28,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound: data.length, // TODO: Update after Umlaut API change
       items,
-      url: ''
+      linkOut: '',
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

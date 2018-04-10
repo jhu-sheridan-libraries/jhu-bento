@@ -19,7 +19,7 @@ const EdsItemPresenter = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'eds-bento',
     title: 'Articles'
@@ -33,10 +33,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound: results.SearchResult.Statistics.TotalHits,
       items,
-      url: ''
+      linkOut: '',
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 

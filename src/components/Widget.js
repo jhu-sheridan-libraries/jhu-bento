@@ -7,38 +7,37 @@ class Widget extends Component {
   }
 
   render() {
+    let body 
     if (this.props.numFound < 0) {
-      return (
-        <div id={ this.props.id } className='bento-box'>
-          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
-            <h3>{ this.props.title }</h3>
-          </div>
-          <div className='no-search'>
-            Please submit a search
-          </div>
-        </div>
-      )
+      body = <div className='no-search'>Please submit a search</div>
+    } else if (this.props.numFound === 0) {
+      body = <div className='no-results'>No results found</div>
     } else {
-      return (
-        <div id={ this.props.id } className='bento-box'>
-          <div className='bento-box-header' style={{ cursor: 'pointer' }}>
-            <h3><a href={ this.props.url }>{ this.props.title }</a></h3>
-            <span className='count'><a href={ this.props.url }>{ this.props.numFound.toLocaleString('en') } Results</a></span>
-          </div>
-          <div className='bento-content'>
-            { this.props.items.length ? this.props.items : <div className='no-results'>No results found</div> }
-          </div>
-          <div className='more-results'>
-              <a href={ this.props.url }>Explore More Results</a>
-          </div>
-        </div>
-      )
+      body = this.props.items
     }
+    return (
+      <div id={ this.props.id } className='bento-box'>        
+        <div className='bento-box-header'>
+          <h3>{ this.props.title }</h3>
+          { this.props.numFound >= 0 && <span className='count'>{ this.props.numFound.toLocaleString('en') } Results</span> }
+        </div>
+        <div className='bento-content'>
+          { this.props.isFetching? 
+              <div className='no-search'>Loading...</div> : 
+              body }
+        </div>
+        { this.props.numFound >= 0 && 
+          <div className='more-results'>
+            <a href={ this.props.linkOut }>Explore More Results</a>
+          </div> }
+      </div>
+    )
   }
-}
+} 
 
 Widget.defaultProps = {
-  numFound: -1
+  numFound: -1,
+  isFetching: false
 }
 
 Widget.propTypes = {
@@ -46,7 +45,8 @@ Widget.propTypes = {
   title: PropTypes.string,
   items: PropTypes.array,
   numFound: PropTypes.number,
-  url: PropTypes.string
+  linkOut: PropTypes.string,
+  isFetching: PropTypes.bool,
 }
 
 export default Widget

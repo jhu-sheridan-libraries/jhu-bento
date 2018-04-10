@@ -15,7 +15,7 @@ const LibGuidesItem = ({ record, index }) => (
   </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lib_guides-bento',
     title: 'LibGuides',
@@ -29,10 +29,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound,
       items,
-      url: `${ process.env.LIBGUIDES_URL }?q=${ '' }`
+      linkOut: `${ process.env.LIBGUIDES_URL }?q=${ '' }`,
+      isFetching,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching } 
   }
 }
 

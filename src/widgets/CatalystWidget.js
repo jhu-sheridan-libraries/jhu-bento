@@ -20,7 +20,8 @@ const CatalystItem = ({ record, index }) => (
     </div>
 )
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, isFetching }) => {
+  console.log(isFetching)
   let initProps = {
     id: 'catalyst-bento',
     title: 'Catalyst'
@@ -34,10 +35,11 @@ const mapStateToProps = ({ data }) => {
       ...initProps,
       numFound,
       items,
-      url: `${ process.env.CATALYST_URL }?search_field=all_fields&q=`
+      isFetching,
+      linkOut: `${ process.env.CATALYST_URL }?search_field=all_fields&q=`,
     }
   } else {
-    return initProps
+    return { ...initProps, isFetching }
   }
 }
 
