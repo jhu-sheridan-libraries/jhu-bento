@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Widget from '../components/Widget'
 
 const searchLibGuides = (searchParams) => {
-  let url = `${ process.env.CATALYST_SOLR }/select`
+  let url = `${ process.env.LIBGUIDES_SOLR }/select`
   let query = `content:${ searchParams.query } AND id:*guides*`
   let lgSearchParams = { ...searchParams, query }
   return getSolrSearchPromise(lgSearchParams, url)
