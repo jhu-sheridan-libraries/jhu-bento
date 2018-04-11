@@ -21,7 +21,6 @@ const CatalystItem = ({ record, index }) => (
 )
 
 const mapStateToProps = ({ data, isFetching }) => {
-  console.log(isFetching)
   let initProps = {
     id: 'catalyst-bento',
     title: 'Catalyst'

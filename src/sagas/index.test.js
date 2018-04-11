@@ -1,21 +1,39 @@
 import { expectSaga } from 'redux-saga-test-plan'
 import faker from 'faker'
+import { push, LOCATION_CHANGE } from 'react-router-redux'
 import { __RewireAPI__ as Saga } from './index'
 import * as actionTypes from '../actions/constants'
 
 describe('Saga', () => {
   describe('search saga', () => {
-    it('calls doSearch function and return a namespaced action', () => {
+
+
+    it('calls api and creates a namespaced action for BENTO_SEARCH', () => {
       const search = Saga.__get__('search')
-      let namespace = faker.lorem.word()
-      let query = faker.lorem.word()
-      let action = {
+      const callApi = value => ({ value })
+      const namespace = faker.lorem.word()
+      const searchTerm = faker.lorem.word()
+      const action = {
         type: actionTypes.BENTO_SEARCH,
-        payload: query
+        payload: { query: searchTerm }
       }
-      const doSearch = value => ({ value })
-      expectSaga(search, namespace, doSearch, action)
-        .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_SUCCESS }`, payload: { value: query }})
+      
+      return expectSaga(search, namespace, callApi, action)
+        .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_SUCCESS }`, payload: { value: { query: searchTerm }}})
+        .run()
+    })
+
+    it('calls api and creates a namespaced action for router LOCATION_CHANGE', () => {
+      const search = Saga.__get__('search')
+      const callApi = value => ({ value })
+      const namespace = faker.lorem.word()
+      const searchTerm = faker.lorem.word()
+      const action = {
+        type: LOCATION_CHANGE,
+        payload: { search: `q=${ searchTerm }` }
+      }
+      return expectSaga(search, namespace, callApi, action) 
+        .put({ type: `${ namespace }/${ actionTypes.BENTO_SEARCH_SUCCESS }`, payload: { value: { query: searchTerm }}})
         .run()
     })
   })
@@ -29,7 +47,7 @@ describe('Saga', () => {
         type: actionTypes.BENTO_SEARCH,
         payload: { query: searchTerm }
       }
-      expectSaga(history, action)
+      return expectSaga(history, action)
         .put({ search: `q=${ searchTerm }` })
         .run()
       Saga.__ResetDependency__('push')
