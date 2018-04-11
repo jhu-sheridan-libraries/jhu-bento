@@ -16,7 +16,7 @@ class Widget extends Component {
         </div>
         <div className='bento-content'>
           { this.props.isFetching? 
-              <div className='no-search'>Loading...</div> : 
+              <div className='loading'>Loading...</div> : 
               body }
         </div>
         { this.props.numFound >= 0 && 
