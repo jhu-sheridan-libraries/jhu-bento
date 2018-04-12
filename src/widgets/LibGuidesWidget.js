@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
+import { getSolrSearchPromise } from '../selectors'
 
 const searchLibGuides = (searchParams) => {
   let url = `${ process.env.LIBGUIDES_SOLR }/select`
