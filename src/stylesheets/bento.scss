@@ -1,10 +1,24 @@
+.container {
+  width: auto;
+}
+
+//** Search Box **//
+
+.form-control {
+  height: 40px;
+  font-size: 18px;
+  font-weight:normal;
+}
+
+.search-btn {
+  height:40px;
+}
+
 //** Masonry Layout **//
 
 .main-container {
   column-count: 3;
   column-gap: 1em;
-  margin-left: 15px;
-  margin-right: -1em;
 }
 
 .bento-box {
@@ -83,12 +97,19 @@
 
 /* Larger than mobile */
 @media (min-width: 0px) {
+  .container {
+    padding: 0;
+    margin:20px;
+  }
   .main-container {
       -moz-column-count: 1;
       -webkit-column-count: 1;
       column-count: 1;
-      margin-right:0;
   }
+  .submit-search-text {
+    position: relative;
+  }
+
 }
 
 /* Larger than phablet */
@@ -97,22 +118,29 @@
       -moz-column-count: 2;
       -webkit-column-count: 2;
       column-count: 2;
-      margin-right:1em;
   }
 }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-  .main-container {
-      -moz-column-count: 3;
-      -webkit-column-count: 3;
-      column-count: 3;
-      margin-right: -1em;
+
+  .input-group /* search box */{
+    margin:0 80px 25px 80px;
   }
 }
 
 /* Larger than desktop */
-@media (min-width: 1000px) {}
+@media (min-width: 1000px) {
+  .input-group /* search box */{
+    margin:0 250px 25px 250px;
+  }
+  .main-container {
+      -moz-column-count: 3;
+      -webkit-column-count: 3;
+      column-count: 3;
+      margin: 0 40px;
+  }
+}
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
