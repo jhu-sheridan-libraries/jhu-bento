@@ -7,14 +7,7 @@ class Widget extends Component {
   }
 
   render() {
-    let body 
-    if (this.props.numFound < 0) {
-      body = <div className='no-search'>Please submit a search</div>
-    } else if (this.props.numFound === 0) {
-      body = <div className='no-results'>No results found</div>
-    } else {
-      body = this.props.items
-    }
+    let body = this.props.numFound > 0 ? this.props.items : ''
     return (
       <div id={ this.props.id } className='bento-box'>        
         <div className='bento-box-header'>
@@ -23,7 +16,7 @@ class Widget extends Component {
         </div>
         <div className='bento-content'>
           { this.props.isFetching? 
-              <div className='no-search'>Loading...</div> : 
+              <div className='loading'>Loading...</div> : 
               body }
         </div>
         { this.props.numFound >= 0 && 

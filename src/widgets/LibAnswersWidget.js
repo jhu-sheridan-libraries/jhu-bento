@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
 import { getApiSearchPromise } from '../selectors'
+import ent from 'ent'
 
 const searchLibAnswers = (searchParams) => {
   let url = `${ process.env.LIBANSWERS_API }?q=${ searchParams.query }`
@@ -11,7 +12,7 @@ const searchLibAnswers = (searchParams) => {
 const LibAnswersItem = ({ record, index }) => (
   <div className='item'>
       <span className='itemTitle'><a href={ record.url }>{ record.question }</a></span>
-      <span className='types'>{ record.topics.join(', ') }</span>
+      <span className='types'>{ ent.decode( record.topics.join(', ') ) }</span>
   </div>
 )
 

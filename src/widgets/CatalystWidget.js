@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Widget from '../components/Widget'
-import { getSolrSearchPromise } from '../selectors';
+import { getSolrSearchPromise } from '../selectors'
 
 const searchCatalyst = (searchParams) => {
   let url = `${ process.env.CATALYST_SOLR }/select`
@@ -21,7 +21,6 @@ const CatalystItem = ({ record, index }) => (
 )
 
 const mapStateToProps = ({ data, isFetching }) => {
-  console.log(isFetching)
   let initProps = {
     id: 'catalyst-bento',
     title: 'Catalyst'

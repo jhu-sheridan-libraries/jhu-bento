@@ -51,6 +51,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "ent": "^2.2.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "query-string": "^6.0.0",
