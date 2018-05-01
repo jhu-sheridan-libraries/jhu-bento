@@ -46,17 +46,37 @@
     }
   }
   h3 {
-    margin:0;
+    margin:0 0 5px 0;
     padding:0;
   }
 }
 
-.no-search {
-  background-color: #fff;
-  padding: 10px 12px;
+.description {
+  font-style: italic;
+  margin:0;
 }
 
-.no-results {
+.count {
+  text-align: right;
+  font-size: 1.1em;
+  margin:0;
+  padding: 10px 12px;
+  background-color: #efefef;
+  color: #4A484C;
+  border-bottom: 1px solid #ddd;
+}
+
+.loading {
+  text-align: right;
+  font-style: italic;
+  margin:0;
+  padding: 10px 12px;
+  background-color: #efefef;
+  color: #4A484C;
+  border-bottom: 1px solid #ddd;
+}
+
+.no-search {
   background-color: #fff;
   padding: 10px 12px;
 }
@@ -81,7 +101,7 @@
 
 .more-results {
   font-size: 1.2em;
-  padding: 10px 8px;
+  padding: 10px 12px;
   background-color: #4A484C;
   a {
     color: #fff;

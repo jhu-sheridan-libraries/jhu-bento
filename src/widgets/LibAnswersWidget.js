@@ -19,7 +19,8 @@ const LibAnswersItem = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lib_answers-bento',
-    title: 'LibAnswers',
+    title: 'Ask a Librarian',
+    description: 'Frequently asked questions'
   }
   if ('search' in data) {
     let { numFound, results } = data.search

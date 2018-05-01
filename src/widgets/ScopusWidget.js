@@ -26,7 +26,8 @@ const selectUrl = (record) => {
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'scopus-bento',
-    title: 'SCOPUS'
+    title: 'Results from SCOPUS',
+    description: 'Articles and more with a Sciences focus'
   }
   if ('search-results' in data) {
     let results = data['search-results']

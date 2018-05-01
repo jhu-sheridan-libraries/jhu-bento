@@ -17,7 +17,8 @@ const FinditItem = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'findit-bento',
-    title: 'Findit',
+    title: 'Journals & Newspapers',
+    description: 'JHU subscriptions'
   }
   // TODO: Update after change of Umlaut API
   if (data instanceof Array) {
