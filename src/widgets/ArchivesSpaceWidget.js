@@ -22,7 +22,8 @@ const ArchiveSpaceItemPresenter = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'archivesspace-bento',
-    title: 'ArchivesSpace'
+    title: 'ArchivesSpace',
+    description: 'Archives and manuscripts at JHU'
   }
   if ('results' in data) {
     let { results, total_hits } = data

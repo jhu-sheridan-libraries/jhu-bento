@@ -22,7 +22,8 @@ const EdsItemPresenter = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'eds-bento',
-    title: 'Articles'
+    title: 'Results from EBSCO',
+    description: 'Articles and more with a Humanities focus'
   }
   if ('results' in data) {
     let { results, records } = data

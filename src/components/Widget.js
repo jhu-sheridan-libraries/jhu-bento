@@ -9,24 +9,25 @@ class Widget extends Component {
   render() {
     let body = this.props.numFound > 0 ? this.props.items : ''
     return (
-      <div id={ this.props.id } className='bento-box'>        
+      <div id={ this.props.id } className='bento-box'>
         <div className='bento-box-header'>
           <h3>{ this.props.title }</h3>
-          { this.props.numFound >= 0 && <span className='count'>{ this.props.numFound.toLocaleString('en') } Results</span> }
+          <p className='description'>{ this.props.description }</p>
         </div>
+        { this.props.numFound >= 0 && <div className='count'>{ this.props.numFound.toLocaleString('en') } Results</div> }
         <div className='bento-content'>
-          { this.props.isFetching? 
-              <div className='loading'>Loading...</div> : 
+          { this.props.isFetching?
+              <div className='loading'>Loading...</div> :
               body }
         </div>
-        { this.props.numFound > 0 && 
+        { this.props.numFound > 0 &&
           <div className='more-results'>
             <a href={ this.props.linkOut }>Explore More Results</a>
           </div> }
       </div>
     )
   }
-} 
+}
 
 Widget.defaultProps = {
   numFound: -1,
@@ -36,6 +37,7 @@ Widget.defaultProps = {
 Widget.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
+  description: PropTypes.string,
   items: PropTypes.array,
   numFound: PropTypes.number,
   linkOut: PropTypes.string,

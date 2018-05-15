@@ -23,7 +23,8 @@ const LibGuidesItem = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lib_guides-bento',
-    title: 'LibGuides',
+    title: 'Guides by Subject',
+    description: 'Research tools and resources recommended by librarians'
   }
   if ('response' in data) {
     let { docs, numFound, start } = data.response
@@ -38,7 +39,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       isFetching,
     }
   } else {
-    return { ...initProps, isFetching } 
+    return { ...initProps, isFetching }
   }
 }
 

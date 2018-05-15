@@ -18,6 +18,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'lara-bento',
     title: 'Databases',
+    description: 'Use to find articles, primary sources, data, and more'
   }
   if ('data' in data) {
     let meta = data.meta, records = data.data

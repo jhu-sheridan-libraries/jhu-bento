@@ -23,7 +23,8 @@ const CatalystItem = ({ record, index }) => (
 const mapStateToProps = ({ data, isFetching }) => {
   let initProps = {
     id: 'catalyst-bento',
-    title: 'Catalyst'
+    title: 'Books & Media',
+    description: 'Books, music, video, and more at JHU'
   }
   if ('response' in data) {
     let { docs, numFound, start } = data.response
