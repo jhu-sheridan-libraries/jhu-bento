@@ -26,7 +26,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   }
   if ('results' in data) {
     let { results, records } = data
-    const items = records.slice(0, 10).map((record, index) =>
+    const items = records.slice(0, 5).map((record, index) =>
       <EdsItemPresenter key={ record.id } record={ record } index= { index }/>
     )
     return {

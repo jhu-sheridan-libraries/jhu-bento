@@ -30,7 +30,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   }
   if ('search-results' in data) {
     let results = data['search-results']
-    const items = results.entry.slice(0, 10).map((record, index) =>
+    const items = results.entry.slice(0, 5).map((record, index) =>
       <ScopusItemPresenter key={ record['dc:identifier'] } record={ record } index= { index }/>
     )
     return {
