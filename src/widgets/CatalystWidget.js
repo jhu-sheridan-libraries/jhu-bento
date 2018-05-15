@@ -25,7 +25,6 @@ const mapStateToProps = ({ data, isFetching }) => {
     id: 'catalyst-bento',
     title: 'Catalyst'
   }
-  console.log(data)
   if ('response' in data) {
     let { docs, numFound, start } = data.response
     const items = docs.slice(0, 5).map((record, index) =>
