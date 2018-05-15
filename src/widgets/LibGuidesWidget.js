@@ -5,9 +5,13 @@ import { getSolrSearchPromise } from '../selectors'
 
 const searchLibGuides = (searchParams) => {
   let url = `${ process.env.LIBGUIDES_SOLR }/select`
-  let query = `content:${ searchParams.query } AND id:*guides*`
-  let lgSearchParams = { ...searchParams, query }
-  return getSolrSearchPromise(lgSearchParams, url)
+  if (searchParams.query !== undefined) {
+    const query = `content:${ searchParams.query } AND id:*guides*`
+    const lgSearchParams = { ...searchParams, query }
+    return getSolrSearchPromise(lgSearchParams, url)
+  } else {
+    return getSolrSearchPromise(searchParams, url)
+  }
 }
 
 const LibGuidesItem = ({ record, index }) => (
