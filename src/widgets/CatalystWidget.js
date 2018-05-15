@@ -28,7 +28,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   }
   if ('response' in data) {
     let { docs, numFound, start } = data.response
-    const items = docs.map((record, index) =>
+    const items = docs.slice(0, 5).map((record, index) =>
       <CatalystItem key={ record.id } record={ record } index= { index+start }/>
     )
     return {

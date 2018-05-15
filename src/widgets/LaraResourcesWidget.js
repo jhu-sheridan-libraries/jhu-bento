@@ -4,7 +4,7 @@ import Widget from '../components/Widget'
 import { getApiSearchPromise } from '../selectors';
 
 const searchLara = (searchParams) => {
-  let url = `${ process.env.LARA_API }?page[size]=10&filter[keyword]=${ searchParams.query }`
+  let url = `${ process.env.LARA_API }?page[size]=5&filter[keyword]=${ searchParams.query }`
   return getApiSearchPromise(searchParams, url)
 }
 
@@ -24,7 +24,7 @@ const mapStateToProps = ({ data, isFetching }) => {
     let meta = data.meta, records = data.data
     let start = meta.page_size * (meta.current_page - 1)
     let numFound = meta.total_count
-    const items = records.map((record, index) =>
+    const items = records.slice(0, 5).map((record, index) =>
       <LaraItem key={ record.id } record={ record } index= { index + start }/>
     )
     return {

@@ -27,7 +27,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   }
   if ('results' in data) {
     let { results, total_hits } = data
-    const items = results.map((record, index) =>
+    const items = results.slice(0, 5).map((record, index) =>
       <ArchiveSpaceItemPresenter key={ record.id } record={ record } index= { index }/>
     )
     return {

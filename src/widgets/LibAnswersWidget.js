@@ -24,7 +24,7 @@ const mapStateToProps = ({ data, isFetching }) => {
   }
   if ('search' in data) {
     let { numFound, results } = data.search
-    const items = results.slice(0, 10).map((record, index) =>
+    const items = results.slice(0, 5).map((record, index) =>
       <LibAnswersItem key={ record.id } record={ record } index= { index }/>
     )
     return {
