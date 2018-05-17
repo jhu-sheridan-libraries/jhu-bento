@@ -10,7 +10,7 @@ const searchLara = (searchParams) => {
 
 const LaraItem = ({ record, index }) => (
   <div className='item'>
-      <span className='itemTitle'>{ record.attributes.name }</span>
+      <span className='itemTitle'><a href={ 'http://databases.library.jhu.edu/databases/database/' + record.attributes.jhu_id } target='_new'>{ record.attributes.name }</a></span>
   </div>
 )
 
@@ -31,7 +31,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound,
       items,
-      linkOut: '',
+      linkOut: 'http://databases.library.jhu.edu/?lang=&base=databases&action=find&query=' + meta.filter.keyword,
       isFetching,
     }
   } else {
