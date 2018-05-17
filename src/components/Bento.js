@@ -105,6 +105,9 @@ class Bento extends Component {
               <div>
                 { this.renderWidgetContainer('findit') }
               </div>
+              <div>
+                { this.renderWidgetContainer('pubmed') }
+              </div>
         </div>
       </div>
     )
