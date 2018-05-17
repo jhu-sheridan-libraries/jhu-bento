@@ -22,7 +22,7 @@ class Widget extends Component {
         </div>
         { this.props.numFound > 0 &&
           <div className='more-results'>
-            <a href={ this.props.linkOut }>Explore More Results</a>
+            <a href={ this.props.linkOut } target='_more'>Explore More Results</a>
           </div> }
       </div>
     )

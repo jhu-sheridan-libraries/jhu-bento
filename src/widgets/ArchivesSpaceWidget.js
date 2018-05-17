@@ -34,6 +34,7 @@ const mapStateToProps = ({ data, isFetching }) => {
       ...initProps,
       numFound: total_hits,
       items,
+      linkOut: 'http://jhepptest.library.jhu.edu:9999/search?op[]=&q[]=' + data.query,
       isFetching,
     }
   } else {
