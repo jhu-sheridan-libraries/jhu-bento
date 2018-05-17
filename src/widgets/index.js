@@ -6,6 +6,7 @@ import LibAnswersWidget, { searchLibAnswers } from './LibAnswersWidget'
 import ScopusWidget, { searchScopus } from './ScopusWidget'
 import LibGuidesWidget, { searchLibGuides } from './LibGuidesWidget'
 import FinditWidget, { searchFindit } from './FinditWidget'
+import PubmedWidget, { searchPubmed } from './PubmedWidget'
 import '../stylesheets/widget.scss'
 
 const widgets = {
@@ -17,6 +18,7 @@ const widgets = {
   scopus:     { widget: ScopusWidget,        api: searchScopus },
   libGuides:  { widget: LibGuidesWidget,     api: searchLibGuides },
   findit:     { widget: FinditWidget,        api: searchFindit },
+  pubmed:     { widget: PubmedWidget,        api: searchPubmed }
 }
 
 export default widgets
