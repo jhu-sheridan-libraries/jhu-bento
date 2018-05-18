@@ -9,13 +9,13 @@ const searchArchivesSpace = (searchParams) => {
 }
 
 const ArchiveSpaceItemPresenter = ({ record, index }) => (
-  <div className='item'>
-      <a href={ process.env.ARCHIVESSPACE_URL + record.uri }>
-        <div className='itemTitle' >
-          { record.title }
-        </div>
-        <span className='types'>{ record.level }, { record.child_container_u_sstr }</span>
-      </a>
+  <div className='item'>      
+      <span className='itemTitle' >
+        <a href={ process.env.ARCHIVESSPACE_URL + record.uri }>
+        { record.title }
+        </a>
+      </span>
+      { record.creators? <span className='types'>{ record.creators[0] }</span> : '' }
   </div>
 )
 
