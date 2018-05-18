@@ -5,6 +5,7 @@ import { getSolrSearchPromise } from '../selectors'
 
 const searchCatalyst = (searchParams) => {
   let url = `${ process.env.CATALYST_SOLR }/select`
+  searchParams = { ...searchParams, filter: ["format:(\"Blu-ray\" OR  \"Book\" OR  \"CD\" OR  \"DVD\" OR  \"Dissertation/Thesis\" OR  \"Image\" OR  \"LP\" OR  \"Map/Globe\" OR  \"Microform\" OR  \"Musical Recording\" OR  \"Musical Score\" OR  \"Non-musical Recording\" OR  \"Software/Data\" OR  \"VHS\" OR  \"Video/Film\")"], }
   return getSolrSearchPromise(searchParams, url)
 }
 
