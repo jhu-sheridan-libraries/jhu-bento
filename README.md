@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento.svg?branch=master)](https://travis-ci.org/jhu-sheridan-libraries/jhu_bento)
-[![Maintainability](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/maintainability)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu_bento/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/test_coverage)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu_bento/test_coverage)
-[![Dependency Status](https://beta.gemnasium.com/badges/github.com/jhu-sheridan-libraries/jhu_bento.svg)](https://beta.gemnasium.com/projects/github.com/jhu-sheridan-libraries/jhu_bento)
+[![Build Status](https://travis-ci.org/jhu-sheridan-libraries/jhu-bento.svg?branch=master)](https://travis-ci.org/jhu-sheridan-libraries/jhu-bento)
+[![Maintainability](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/maintainability)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu-bento/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/58c8c6e04033c00ea859/test_coverage)](https://codeclimate.com/github/jhu-sheridan-libraries/jhu-bento/test_coverage)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/jhu-sheridan-libraries/jhu-bento.svg)](https://beta.gemnasium.com/projects/github.com/jhu-sheridan-libraries/jhu-bento)
 
 # Bento
 
@@ -16,7 +16,7 @@ Then install nodejs and yarn. On mac, you may use brew to install both.
 Install node modules
 
 ```
-cd jhu_bento
+cd jhu-bento
 yarn install
 ```
 
@@ -33,7 +33,7 @@ Now you can look at the application at http://127.0.0.1:8080/
 Start the webpack server,
 
 ```
-cd jhu_bento
+cd jhu-bento
 yarn start
 ```
 
