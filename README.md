@@ -28,6 +28,10 @@ yarn start
 
 Now you can look at the application at http://127.0.0.1:8080/
 
+## Set up the APIs
+
+Create a `.env` file, and fill in the API root in the file. See dotenv.example for a template of the values. 
+
 ## Development
 
 Start the webpack server,
